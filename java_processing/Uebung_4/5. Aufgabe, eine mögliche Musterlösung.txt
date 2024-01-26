@@ -1,0 +1,429 @@
+5. Aufgabe, eine mögliche Musterlösung
+Taschenrechner
+/**
+
+* Methodenname:    pm
+* Datum:                  23.04.2018
+* Autor:                    Gurn
+* Beschreibung:       Die Methode negiert eine ganze Zahl
+* @param number  - zu negierende Zahl
+* @return byte        - Ergebnis der Negierung
+*/
+byte pm(byte number){
+  return ((byte)(-1 * (byte)number) );
+}
+
+
+/**
+* Methodenname:    pm
+* Datum:                  23.04.2018
+* Autor:                    Gurn
+* Beschreibung:       Die Methode negiert eine ganze Zahl
+* @param number   - zu negierende Zahl
+* @return long         - Ergebnis der Negierung
+*/
+long pm(long number){
+  return ((long)(-1 * (long)number) );
+}
+
+/**
+* Methodenname:    square
+* Datum:                   23.04.2018
+* Autor:                    Gurn
+* Beschreibung:       Die Methode berechnet für die übergebene Zahl die Quadratzahl
+* @param number  - erster Operand der Addition
+* @return int           - Ergebnis der Quadrierung
+*/
+int square(short number){
+  return ((int)(number * number));
+}
+
+/**
+* Methodenname:    square
+* Datum:                  23.04.2018
+* Autor:                    Gurn
+* Beschreibung:       Die Methode berechnet für die übergebene Zahl die Quadratzahl
+* @param number  - erster Operand der Addition
+* @return long        - Ergebnis der Quadrierung
+*/
+long square(int number){
+  return ((long)(number * number));
+}
+
+/**
+* Methodenname:   invert
+* Datum:                  23.04.2018
+* Autor:                    Gurn
+* Beschreibung:       Die Methode invertiert eine ganze Zahl
+* @param number  - Zahl für die Invertierung (1/x)
+* @return int           - Ergebnis der Invertierung
+*/
+float invert(byte number){
+  if (number == 0)
+    return 0;
+  return((float)( 1 / (float)number));
+}
+
+/**
+* Methodenname:    invert
+* Datum:                   23.04.2018
+* Autor:                     Gurn
+* Beschreibung:        Die Methode invertiert eineGleitkommazahl
+* @param number   - Zahl für die Invertierung (1/x)
+* @return double     - Ergebnis der Invertierung
+*/
+double invert(double number){
+  if (number == 0)
+    return 0;
+  return((double)( 1 / (double)number));
+}
+
+
+/**
+* Methodenname:            multiply
+* Datum:                           23.04.2018
+* Autor:                             Gurn
+* Beschreibung:                Die Methode multipliziert zwei ganze Zahlen
+* @param multiplikator   - erster Operand der Multiplikation
+* @param multiplikand    - zweiter Operand der Multiplikation
+* @return int                    - Ergebnis der Multiplikation
+*/
+long multiply(int multiplikator, int multiplikand){
+  return((long)(multiplikator * multiplikand));
+}
+
+/**
+* Methodenname:            multiply
+* Datum:                           23.04.2018
+* Autor:                             Gurn
+* Beschreibung:                Die Methode multipliziert zwei Nachkommazahlen
+* @param multiplikator   - erster Operand der Multiplikation
+* @param multiplikand    - zweiter Operand der Multiplikation
+* @return float                 - Ergebnis der Multiplikation
+*/
+int multiply(short multiplikator, short multiplikand){
+  return((int)(multiplikator * multiplikand));
+}
+
+
+
+Methodenkoepfe
+ /**
+ * Methodenname:     getMax
+ * Datum:                    25.04.2018
+ * Autor:                      Gurn
+ * Beschreibung:         Liefert die größere der beiden Zahlen
+ * @param minzahl1  - erste Zahl für Vergleich
+ * @param minzahl2  - zweite Zahl für Vergleich
+ * @return int             - größere der beiden Zahlen
+ *
+ */
+long getMin(long minZahl1, long minZahl2, long minZahl3){
+  long min = (minZahl1 < minZahl2 ? minZahl1 : minZahl2);
+  return (min < minZahl3 ? min : minZahl3);
+}
+
+
+/**
+ * Methodenname:  getRange
+ * Datum:                 25.04.2018
+ * Autor:                   Gurn
+ * Beschreibung:      Berechnet den Umfang eines Kreises
+ * @param radius    - Kreisradius
+ * @return float       - berechneter Umfang
+ *
+ */
+float getRange(float radius){
+  return ((float)(2 * PI * radius));
+}
+
+
+/**
+ * Methodenname:   getArea
+ * Datum:                 25.04.2018
+ * Autor:                   Gurn
+ * Beschreibung:      Fläche eines beliebigen Dreiecks wird berechnet
+ * @param seiteA    - Seite A des Dreiecks
+ * @param seiteC    - Grundseite des Dreiecks
+ * @param hoehe    - Höhe des Dreiecks
+ * @return float       - berechnete Fläche
+ *
+ */
+float getArea(float seiteA, float seiteC, float hoehe){
+  return ((seiteA + seiteC) / 2 * hoehe);
+}
+
+
+/**
+ * Methodenname:   getAreaCuboid
+ * Datum:                  25.04.2018
+ * Autor:                   Gurn
+ * Beschreibung:      Oberfläche eines Quaders berechnen
+ * @param seiteA    - Seite A des Quaders
+ * @param seiteB    - Seite B des Quaders
+ * @param seiteC    - Seite C des Quaders
+ * @return double   - berechnete Oberfläche
+ *
+ */
+int getAreaCuboid(short seiteA, short seiteB, short seiteC){
+  return ((2 * seiteA * seiteB) + (2 * seiteA * seiteC) + (2 * seiteB * seiteC));
+}
+
+
+/**
+ * Methodenname:             delChar
+ * Datum:                            25.04.2018
+ * Autor:                              Gurn
+ * Beschreibung:                 Löscht in einem String jedes zweite Zeichen
+ * @param strDel               - String in dem Zeichen gelöscht werden
+ * @param welcheStellen   - An welchen Stelle soll gelöscht werden, Zeichenposition % welcheStelle == 0 -> löschen
+ * @return String                - String ohne die gelöschten Zeichen
+ *
+ */
+String delChar(String strDel, byte welcheStellen){
+  String strErg = "";
+  for(int i = 0; i < strDel.length(); i++){
+      if (!(i % welcheStellen == 0))
+        strErg += strDel.charAt(i);
+  }
+  return strErg;
+}
+
+
+
+MethodenkoepfenachAufruf
+/**
+   * Methodenname:     concat
+   * Datum:                    25.04.2018
+   * Autor:                      Gurn
+   * Beschreibung:         Es werden die übergebenen Strings zu einem String zusammengeführt.
+   * @param anyText1   - erster String
+   * @param anyText2   - .
+   * @param anyText3   - .
+   * @param anyText4   - .
+   * @param anyText5   - fünfter und letzter Einzelstring für den String
+   * @return String        - zusammengesetzter String
+   *
+   */
+ String concat(String anyText1, String anyText2, String anyText3, String anyText4, String anyText5){
+    return ((anyText1 + anyText2 + anyText3 + anyText4 + anyText5));
+  }
+
+
+  /**
+   * Methodenname:  concat
+   * Datum:                 25.04.2018
+   * Autor:                   Gurn
+   * Beschreibung:      Es werden die übergebenen Zeichen in einem String zusammengeführt.
+   * @param zahl1     - erstes Zeichen
+   * @param zahl2     - .
+   * @param zahl3     - .
+   * @param zahl4     -  .
+   * @param zahl5     - fünftes und letztes Zeichen für den String
+   * @return String     - als String zusammengesetzte Zahl
+   *
+   */
+ String concat(char zahl1, char zahl2, char zahl3, char zahl4, char zahl5){
+    String erg = ""+zahl1 + zahl2 + zahl3 + zahl4 + zahl5;
+    return (erg);
+  }
+
+
+  /**
+   * Methodenname:   maximum
+   * Datum:                  25.04.2018
+   * Autor:                    Gurn
+   * Beschreibung:       Von 5 gegebenen Ganzzahlen wird die größte gesucht
+   * @param zahl1       - erste Zahl
+   * @param zahl2       - .
+   * @param zahl3       - .
+   * @param zahl4       - .
+   * @param zahl5       - fünfte und letzte Zahl für die Suche
+   * @return int            - größte Zahl
+   *
+   */
+ byte maximum(byte zahl1, byte zahl2, byte zahl3, byte zahl4, byte zahl5){
+    byte groessteZahl = zahl1 > zahl2 ? zahl1 : zahl2;
+    groessteZahl = zahl3 > groessteZahl ? zahl3 : groessteZahl;
+    groessteZahl = zahl4 > groessteZahl ? zahl4 : groessteZahl;
+    groessteZahl = zahl5 > groessteZahl ? zahl5 : groessteZahl;
+    
+    return groessteZahl;
+  }
+ 
+ 
+  /**
+   * Methodenname:   maximum
+   * Datum:                  25.04.2018
+   * Autor:                    Gurn
+   * Beschreibung:       Von 5 gegebenen Doublezahlen wird die größte gesucht
+   * @param zahl1      - erste Zahl
+   * @param zahl2      - .
+   * @param zahl3      - .
+   * @param zahl4      - .
+   * @param zahl5      - fünfte und letzte Zahl für die Suche
+   * @return int           - größte Zahl
+   *
+   */
+ double maximum(double zahl1, double zahl2, double zahl3, double zahl4, double zahl5){
+    double groessteZahl = zahl1 > zahl2 ? zahl1 : zahl2;
+    groessteZahl = zahl3 > groessteZahl ? zahl3 : groessteZahl;
+    groessteZahl = zahl4 > groessteZahl ? zahl4 : groessteZahl;
+    groessteZahl = zahl5 > groessteZahl ? zahl5 : groessteZahl;
+    
+    return groessteZahl;
+  }
+
+
+  /**
+   * Methodenname:      myPow
+   * Datum                      25.04.2018
+   * Autor:                       Gurn
+   * Beschreibung:          Potenzwert einer ganzen Zahl berechnen
+   * @param base          - Basiszahl
+   * @param exponent   - Exponent (Hochzahl)
+   * @return long           - Ergebnis der Berechnung
+   *
+   */
+ long myPow(byte base, byte exponent){
+    long result = 1;
+    
+    for (int i = 1; i <= exponent; i++) {
+       result *= base;
+    }
+    
+    return result;
+  }
+ 
+  /**
+   * Methodenname:        randomString
+   * Datum                       11.11.2022
+   * Autor:                         Gurn
+   * Beschreibung:            Zufallsstring mit kleinen Buschstaben erzeugen
+   * @param pLaenge      - Wie lang soll der Zufallsstring werden
+   * @return String           - erzeugter Zufallsstring
+   *
+   */
+  public String randomString(int pLaenge){
+       String ergebnis = "";
+       for(int i=0; i<pLaenge; i++){
+           char zufallsChar = (char)((int)(Math.random()*26)+97);
+           ergebnis += zufallsChar;
+       }
+       return ergebnis;
+   }
+
+Gefaengnis
+// Autor:           Michael Gurn
+// Matrikelnr.:     4711
+// Datum:
+// Beschreibung: Programm mit "freiem" und "eingesperrtem" Kreis
+
+int start = 200;
+int groesse = 400;
+String message = "Ich will raus hier";
+int xPosLaufschrift;
+PImage mouseLeft;
+PImage mouseRight;
+PImage mouseWheel;
+PImage mouseLeftRed;
+PImage mouseRightRed;
+PImage mouseWheelRed;
+PImage mouseLeftBlue;
+PImage mouseRightBlue;
+PImage mouseWheelBlue;
+boolean mbLeft = true;
+boolean mbRight = true;
+boolean mbWheel = false;
+
+void setup(){
+  size(800,800);
+  textSize(30);  
+  xPosLaufschrift = width ;
+  // alle Bilder nur einmal im setup laden
+  mouseLeft = loadImage("maus-links.png");
+  mouseRight = loadImage("maus-rechts.png");
+  mouseWheel = loadImage("maus-rad.png");
+  mouseLeftRed = loadImage("maus-links-red.png");
+  mouseRightRed = loadImage("maus-rechts-red.png");
+  mouseWheelRed = loadImage("maus-rad-red.png");
+ // Startbilder setzen
+  mouseLeftBlue = mouseLeft;
+  mouseRightBlue = mouseRight;
+  mouseWheelBlue = mouseWheel; 
+}
+
+
+void draw(){
+  background(0);  
+  fill(0);
+  stroke(255);
+
+  // Rechteck mit Größe je nach Maustaste setzen
+  rect(start, start , groesse, groesse);
+ 
+  textSize(20);  
+  textAlign(CENTER, CENTER);
+  fill(0);
+  // aktuelle Mausbilder anzeigen, nur ein Viertel der Originalgröße
+  image(mouseLeft, 10, height - 150, mouseLeft.width / 4, mouseLeft.height / 4);  
+  image(mouseRight, width - 10 - mouseRight.width / 4, height - 150, mouseRight.width / 4, mouseRight.height / 4);  
+  image(mouseWheel, (width- mouseWheel.width / 4) / 2, height - 150, mouseWheel.width / 4, mouseWheel.height / 4);
+  // Mausbeschriftungen
+  text("LEFT", 10 + (mouseLeft.width / 4) / 2 , height - 80);
+  text("WHEEL", width / 2 , height - 80);
+  text("RIGHT", width - 10 - (mouseRight.width / 4) / 2 , height - 80);
+
+  // Kreise zeichnen
+  fill(0, 255, 0);
+  noStroke();
+  circle(mouseX, mouseY, (mbWheel ? 30:20));
+  fill(255, 0 ,0);
+  // Kreis mit gemappten Mauskoordinaten
+  circle(map(mouseX, 0, width, start, width - start), map(mouseY, 0, height, start, height - start), 20);
+ 
+  fill(255);  
+  text(message, width / 2, height / 2);
+  textAlign(LEFT);
+  // Laufschrift
+  text("Testen Sie die Maustasten",xPosLaufschrift, 40);
+  // Laufschrift links verschwunden, dann rechts wieder reinlaufen lassen
+  if(xPosLaufschrift + textWidth("Testen Sie die Maustasten") < 0)
+    xPosLaufschrift = width;
+  else
+    xPosLaufschrift -= 2;
+}
+
+
+void mousePressed(){
+  // je nach Maustaste Startposition und Größe des Rechtecks setzen
+  // Text für die Mitte anpassen, Merkervariable für Wheltaste setzen und die
+  // Mausbilder setzen
+  if (mouseButton == RIGHT){
+    start = 100;
+    groesse = 600;
+    message = "echt jetzt?";
+    mbWheel = false;
+    mouseLeft = mouseLeftBlue;
+    mouseRight = mouseRightRed;
+    mouseWheel = mouseWheelBlue;
+  }
+  if (mouseButton == LEFT){
+    start = 200;
+    groesse = 400;
+    message = "Ich will raus hier";
+    mbWheel = false;
+    mouseLeft = mouseLeftRed;
+    mouseRight = mouseRightBlue;
+    mouseWheel = mouseWheelBlue;
+  }
+  if (mouseButton == CENTER){
+    start = 0;
+    groesse = 800;
+    mbWheel = true;
+    message = "Warum nicht gleich so";
+    mouseLeft = mouseLeftBlue;
+    mouseRight = mouseRightBlue;
+    mouseWheel = mouseWheelRed;
+  }
+}

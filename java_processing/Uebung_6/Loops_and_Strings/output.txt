@@ -1,0 +1,174 @@
+
+
+Testfälle für Schleifen-/Stringübungen
+======================================
+
+
+Tests mit getFactorial    02.12.2022 22:42:40,723
+======================
+getFactorial( 0):	       1 - Erwartet       1 -> OK
+getFactorial( 1):	       1 - Erwartet       1 -> OK
+getFactorial( 2):	       2 - Erwartet       2 -> OK
+getFactorial( 3):	       6 - Erwartet       6 -> OK
+getFactorial( 4):	      24 - Erwartet      24 -> OK
+getFactorial( 5):	     120 - Erwartet     120 -> OK
+getFactorial( 6):	     720 - Erwartet     720 -> OK
+getFactorial( 8):	   40320 - Erwartet   40320 -> OK
+getFactorial( 9):	  362880 - Erwartet  362880 -> OK
+getFactorial(10):	 3628800 - Erwartet 3628800 -> OK
+
+
+Tests mit existWi    02.12.2022 22:42:40,726
+=================
+existWi("abcWi"):               	  true - Erwartet  true -> OK
+existWi("xyzIOMabc"):           	 false - Erwartet false -> OK
+existWi("Einmal WI immer WI"):  	  true - Erwartet  true -> OK
+existWi("iw oder wp oder iom"): 	 false - Erwartet false -> OK
+existWi("wieder wp"):           	 false - Erwartet  true -> existWi("weder wp noch w iom"): 	 false - Erwartet false -> OK
+existWi(""):                    	 false - Erwartet false -> OK
+existWi( null ):                    	 false - Erwartet false -> OK
+
+
+Tests mit count5or7    02.12.2022 22:42:40,727
+===================
+count5or7(5):               	   1 - Erwartet   1 -> OK
+count5or7(7):               	   1 - Erwartet   1 -> OK
+count5or7(57):               	   2 - Erwartet   2 -> OK
+count5or7(777):               	   3 - Erwartet   3 -> OK
+count5or7(123):               	   0 - Erwartet   0 -> OK
+count5or7(-57):               	   2 - Erwartet   2 -> OK
+count5or7(0):               	   0 - Erwartet   0 -> OK
+
+
+Tests mit getCharCount    02.12.2022 22:42:40,728
+======================
+getCharCount("Programmieren mit Java ist spitze!!! - Oder? ", 2):	  30 - Erwartet  30 -> OK
+getCharCount("Programmieren mit Java ist spitze!!! - Oder? ", 1):	   3 - Erwartet   3 -> OK
+getCharCount("Digital Business                             ", 2):	  13 - Erwartet  13 -> OK
+getCharCount("Digital Business                             ", 1):	   2 - Erwartet   2 -> OK
+getCharCount(" !"#$%&'()*+,-.:;<=>?@[\]^_`{|}~             ", 4):	  32 - Erwartet  32 -> OK
+getCharCount(" !"#$%&'()*+,-./0123456789                   ", 3):	  10 - Erwartet  10 -> OK
+getCharCount("                                             ", 1):	   0 - Erwartet   0 -> OK
+getCharCount( null                                          , 1):	   0 - Erwartet   0 -> OK
+
+
+Tests mit getWithoutVowel    02.12.2022 22:42:40,730
+=========================
+getWithoutVowel("Programmieren, Java, Oh Jeh", false):  "Programmieren, Java, h Jeh" - Erwartet "Programmieren, Java, h Jeh" -> OK
+getWithoutVowel("Programmieren, Java, Oh Jeh",  true):  "Prgrmmrn, Jv, Oh Jh" - Erwartet "Prgrmmrn, Jv, Oh Jh" -> OK
+getWithoutVowel("AEIOUaeiou", false):                   "aeiou" - Erwartet "aeiou" -> OK
+getWithoutVowel("AEIOUaeiou",  true):                   "AEIOU" - Erwartet "AEIOU" -> OK
+getWithoutVowel("",  true):                             "" - Erwartet "" -> OK
+getWithoutVowel( null ,  true):                         "" - Erwartet "" -> OK
+
+
+Tests mit mixString    02.12.2022 22:42:40,731
+===================
+mixString("abc", "xyz"):                        	 "axbycz" - Erwartet "axbycz" -> OK
+mixString("Hallo", "Wi"):                       	 "HWaillo" - Erwartet "HWaillo" -> OK
+mixString("Hallo", ""):                         	 "Hallo" - Erwartet "Hallo" -> OK
+mixString("", "Welt"):                          	 "Welt" - Erwartet "Welt" -> OK
+mixString("", ""):                              	 "" - Erwartet "" -> OK
+mixString("Was Geht?", ""):                     	 "Was Geht?" - Erwartet "Was Geht?" -> OK
+mixString("Programmieren", "Praktikum"):        	 "PPrroagkrtaimkmuimeren" - Erwartet "PPrroagkrtaimkmuimeren" -> OK
+mixString("WB", "WP"):                          	 "WWBP" - Erwartet "WWBP" -> OK
+mixString("Und", "Tschüß"):                     	 "UTnsdchüß" - Erwartet "UTnsdchüß" -> OK
+
+
+Tests mit repeatStart    02.12.2022 22:42:40,732
+=====================
+     _.--""--._
+    /  _    _  \
+ _  ( (_\  /_) )  _
+{ \._\   /\   /_./ }
+/_"=-.}______{.-="_\      laut RuntimeConfig noch nicht implementiert
+ _  _.=("""")=._  _
+(_'"_.-"`~~`"-._"'_)
+ {_"            "_}
+
+
+Tests mit getPairs    02.12.2022 22:42:40,732
+==================
+     _.--""--._
+    /  _    _  \
+ _  ( (_\  /_) )  _
+{ \._\   /\   /_./ }
+/_"=-.}______{.-="_\      laut RuntimeConfig noch nicht implementiert
+ _  _.=("""")=._  _
+(_'"_.-"`~~`"-._"'_)
+ {_"            "_}
+
+
+Tests mit replaceChar    02.12.2022 22:42:40,732
+=====================
+replaceChar("Monitor", 'o', 'a'):    "Manitar"	 Erwartet "Manitar" -> OK
+replaceChar("Wein", 'W', 'B'):       "Bein"	 Erwartet "Bein" -> OK
+replaceChar("", 'a', 'z'):           ""	 Erwartet "" -> OK
+replaceChar( null , 'X', 'Y'):       ""	 Erwartet "" -> OK
+replaceChar("Bein", 'n', 'r'):       "Beir"	 Erwartet "Beir" -> OK
+replaceChar("Beir", 'i', 'a'):       "Bear"	 Erwartet "Bear" -> OK
+replaceChar("Bear", 'e', 'i'):       "Biar"	 Erwartet "Biar" -> OK
+replaceChar("Biar", 'a', 'e'):       "Bier"	 Erwartet "Bier" -> OK
+
+
+Tests mit mixNumber    02.12.2022 22:42:40,732
+===================
+mixNumber(  1234,  5678):	   15263748 - Erwartet   15263748 -> OK
+mixNumber(  1111,   222):	    1212121 - Erwartet    1212121 -> OK
+mixNumber(    11,  2222):	     121222 - Erwartet     121222 -> OK
+mixNumber( 12345, 54321):	 1524334251 - Erwartet 1524334251 -> OK
+mixNumber(  -135,   246):	    -214365 - Erwartet    -123456 -> 
+
+Tests mit delDoubleChar    02.12.2022 22:42:40,733
+=======================
+delDoubleChar("Giraffe"):                                           	 "Girafe" - Erwartet "Girafe" -> OK
+delDoubleChar("Danger!!!"):                                         	 "Danger!" - Erwartet "Danger!" -> OK
+delDoubleChar(""):                                                  	 "" - Erwartet "" -> OK
+delDoubleChar("null"):                                                  	 "" - Erwartet "null" -> delDoubleChar("Ich bin kurz für kleine Affen. - Bitte?? - Makaken"):	 "Ich bin kurz für kleine Afen. - Bite? - Makaken" - Erwartet "Ich bin kurz für kleine Afen. - Bite? - Makaken" -> OK
+
+
+Tests mit countDigit    02.12.2022 22:42:40,734
+====================
+countDigit("88410 Weingarten, Lazarettstr. 1            "):  22 - Erwartet  22 -> OK
+countDigit("4711 + 0815 = 5526                          "):  45 - Erwartet  45 -> OK
+countDigit("int Max.: 2147483647   int Min.: -2147483648"):  93 - Erwartet  93 -> OK
+countDigit("Fasnet 11.11.2022 11:11 - 21.02.2023 19:00  "):  36 - Erwartet  36 -> OK
+countDigit("1111 1111 (FF) + 1 = 1 0000 0000 (100)      "):  11 - Erwartet  11 -> OK
+countDigit("11 ^ 11 = 285.311.670.611                   "):  45 - Erwartet  45 -> OK
+
+
+Tests mit replaceWithWhatever    02.12.2022 22:42:40,734
+=============================
+     _.--""--._
+    /  _    _  \
+ _  ( (_\  /_) )  _
+{ \._\   /\   /_./ }
+/_"=-.}______{.-="_\      laut RuntimeConfig noch nicht implementiert
+ _  _.=("""")=._  _
+(_'"_.-"`~~`"-._"'_)
+ {_"            "_}
+
+
+Tests mit isPalindrom    02.12.2022 22:42:40,735
+=====================
+isPalindrom("Hannah", FALSE):          Ja	 Erwartet   Ja -> OK
+isPalindrom("Hannah",  TRUE):        Nein	 Erwartet Nein -> OK
+isPalindrom("Regallager", FALSE):      Ja	 Erwartet   Ja -> OK
+isPalindrom("neben",  TRUE):         Nein	 Erwartet   Ja -> isPalindrom("",  TRUE):              Nein	 Erwartet Nein -> OK
+isPalindrom( null , FALSE):          Nein	 Erwartet Nein -> OK
+isPalindrom("Reittier", FALSE):        Ja	 Erwartet   Ja -> OK
+isPalindrom("Reliefpfeiler", FALSE):   Ja	 Erwartet   Ja -> OK
+
+
+Tests mit testPassword    02.12.2022 22:42:40,736
+======================
+testPassword("Ab345678", 8, 2, 2):          false	 - Erwartet false -> OK
+testPassword("Ab34567!", 8, 2, 2):           true	 - Erwartet  true -> OK
+testPassword("Ab34567!", 9, 2, 2):          false	 - Erwartet false -> OK
+testPassword("södkfG1876!*", 10, 2, 4):       true	 - Erwartet  true -> OK
+testPassword("södkfG1876!*", 10, 7, 4):      false	 - Erwartet false -> OK
+testPassword("södkfG1876!*", 10, 6, 4):       true	 - Erwartet  true -> OK
+testPassword("södkfG18761g", 10, 6, 4):      false	 - Erwartet false -> OK
+testPassword("södkfG1876!*", 10, 2, 5):      false	 - Erwartet false -> OK
+testPassword("", 10, 2, 5):                  false	 - Erwartet false -> OK
+testPassword( null , 10, 2, 5):              false	 - Erwartet false -> OK

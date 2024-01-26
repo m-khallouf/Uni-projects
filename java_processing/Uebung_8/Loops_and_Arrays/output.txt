@@ -1,0 +1,156 @@
+
+
+Testfälle für Schleifen-/Arrayübungen
+=====================================
+
+
+Tests mit isStartOrEndEqual    28.03.2023 01:04:08,479
+===========================
+isTautogramm([1, 2, 3], [7, 3]   ):  true - Erwartet  true -> OK
+isTautogramm([1, 2, 3], [7, 3, 2]): false - Erwartet false -> OK
+isTautogramm([1, 2, 3], [1, 3]   ):  true - Erwartet  true -> OK
+isTautogramm([1, 2, 3], [1]      ):  true - Erwartet  true -> OK
+isTautogramm([1, 2, 3], [2]      ): false - Erwartet false -> OK
+
+
+Tests mit getFirstAndLast    28.03.2023 01:04:08,481
+=========================
+getFirstAndLast([1]                        ): [1, 1] - Erwartet [1, 1] -> OK
+getFirstAndLast([1, 2]                     ): [1, 2] - Erwartet [1, 2] -> OK
+getFirstAndLast([1, 2, 3]                  ): [1, 3] - Erwartet [1, 3] -> OK
+getFirstAndLast([1, 2, 3, 4]               ): [1, 4] - Erwartet [1, 4] -> OK
+getFirstAndLast([1, 2, 3, 4, 5]            ): [1, 5] - Erwartet [1, 5] -> OK
+getFirstAndLast([1, 2, 3, 4, 5, 6]         ): [1, 6] - Erwartet [1, 6] -> OK
+getFirstAndLast([1, 2, 3, 4, 5, 6, 7]      ): [1, 7] - Erwartet [1, 7] -> OK
+getFirstAndLast([1, 2, 3, 4, 5, 6, 7, 8]   ): [1, 8] - Erwartet [1, 8] -> OK
+getFirstAndLast([1, 2, 3, 4, 5, 6, 7, 8, 9]): [1, 9] - Erwartet [1, 9] -> OK
+getFirstAndLast(null                       ): []     - Erwartet []     -> OK
+getFirstAndLast([]                         ): []     - Erwartet []     -> OK
+
+
+Tests mit swapFirstLast    28.03.2023 01:04:08,482
+=======================
+swapFirstLast([1, 2, 3, 4]    ): [4, 2, 3, 1]     - Erwartet [4, 2, 3, 1]     -> OK
+swapFirstLast([8, 6, 7, 9, 5] ): [5, 6, 7, 9, 8]  - Erwartet [5, 6, 7, 9, 8]  -> OK
+swapFirstLast([1]             ): [1]              - Erwartet [1]              -> OK
+swapFirstLast([1, 2]          ): [2, 1]           - Erwartet [2, 1]           -> OK
+swapFirstLast([1, 2, 3]       ): [3, 2, 1]        - Erwartet [3, 2, 1]        -> OK
+swapFirstLast([]              ): []               - Erwartet []               -> OK
+swapFirstLast([]              ): []               - Erwartet []               -> OK
+
+
+Tests mit swapArray    28.03.2023 01:04:08,482
+===================
+swapArray([1, 2, 3]         , [4, 5, 6]         ): [4, 5, 6]         , [1, 2, 3]          - Erwartet [4, 5, 6]         , [1, 2, 3]          -> OK
+swapArray([1, 2, 3]         , [7, 8, 9]         ): [7, 8, 9]         , [1, 2, 3]          - Erwartet [7, 8, 9]         , [1, 2, 3]          -> OK
+swapArray([]                , []                ): []                , []                 - Erwartet []                , []                 -> OK
+swapArray(null              , null              ): null              , null               - Erwartet null              , null               -> true
+swapArray([9, 8, 7, 6, 5, 4], [9, 8]            ): [9, 8, 7, 6, 5, 4], [9, 8]             - Erwartet [9, 8, 7, 6, 5, 4], [9, 8]             -> true
+
+Tests mit findLong    28.03.2023 01:04:08,483
+==================
+findLong([1, 12, 123, 1234, 12345, 1234, 123, 12, 1]):  5 - Erwartet  5 -> OK
+findLong([12345678, 987654310, 1, 12, 2147483647]   ): 10 - Erwartet 10 -> OK
+findLong([2345, 12, 9223372036854775807, 345678]    ): 19 - Erwartet 19 -> OK
+findLong(null                                       ):  0 - Erwartet  0 -> OK
+findLong([]                                         ):  0 - Erwartet  0 -> OK
+
+
+Tests mit findMax    28.03.2023 01:04:08,484
+=================
+findMax([1, 12, 123, 1234, -12346, 12345, 123, 12, 1]):      12345 - Erwartet      12345 -> OK
+findMax([12345678, 987654310, 1, 12, 2147483647]     ): 2147483647 - Erwartet 2147483647 -> OK
+findMax([2345, 12, 1234567890, 345678]               ): 1234567890 - Erwartet 1234567890 -> OK
+findMax([-1, -10, -100, -1000, -10000, -100000]      ):         -1 - Erwartet         -1 -> OK
+findMax(null                                         ):          0 - Erwartet          0 -> OK
+findMax([]                                           ):          0 - Erwartet          0 -> OK
+
+
+Tests mit findLongest    28.03.2023 01:04:08,484
+=====================
+findLongest([ [1, 2], [1, 2, 3, 4], [1], [1, 2, 3] ]                      ):  4 - Erwartet  4 -> OK
+findLongest([ [], [1], [1], [1, 3] ]                                      ):  2 - Erwartet  2 -> OK
+findLongest([ [] ]                                                        ):  0 - Erwartet  0 -> OK
+findLongest(null                                                          ):  0 - Erwartet  0 -> OK
+findLongest([ [1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 2, 3, 4], [1], [1, 2, 3] ] ):  9 - Erwartet  9 -> OK
+findLongest([ [99, 2], [100, 82, 43, 44, 7, 8, 9], [1], [1, 2, 3] ]       ):  7 - Erwartet  7 -> OK
+findLongest([ [1], [1, 2], [1, 2, 3], [1, 2, 3, 4], [1, 2, 3, 4, 5] ]     ):  5 - Erwartet  5 -> OK
+
+
+Tests mit shiftArray    28.03.2023 01:04:08,485
+====================
+shiftArray([6, 2, 5, 3]   , Links ): [2, 5, 3, 6]    - Erwartet [2, 5, 3, 6]    -> OK
+shiftArray([6, 2, 5, 3]   , Rechts): [3, 6, 2, 5]    - Erwartet [3, 6, 2, 5]    -> OK
+shiftArray([1, 1, 2, 2, 4], Links ): [1, 2, 2, 4, 1] - Erwartet [1, 2, 2, 4, 1] -> OK
+shiftArray([1, 1, 2, 2, 4], Rechts): [4, 1, 1, 2, 2] - Erwartet [4, 1, 1, 2, 2] -> OK
+shiftArray([1, 2, 3]      , Links ): [2, 3, 1]       - Erwartet [2, 3, 1]       -> OK
+shiftArray([1]            , Links ): [1]             - Erwartet [1]             -> OK
+shiftArray([]             , Rechts): []              - Erwartet []              -> OK
+
+
+Tests mit countOddOrEven    28.03.2023 01:04:08,486
+========================
+countOddOrEven([1, 2, 3, 4]                  , ungerade):  2 - Erwartet  2 -> OK
+countOddOrEven([1, 2, 2, 4]                  , gerade  ):  3 - Erwartet  3 -> OK
+countOddOrEven([1, 2, 3, 4, 5, 6, 7, 8, 9, 0], gerade  ):  5 - Erwartet  5 -> OK
+countOddOrEven([1, 2, 3, 4, 5, 6, 7, 8, 9, 0], ungerade):  5 - Erwartet  5 -> OK
+countOddOrEven([1, 1, 3, 3]                  , ungerade):  4 - Erwartet  4 -> OK
+countOddOrEven([]                            , ungerade):  0 - Erwartet  0 -> OK
+countOddOrEven([2, 4, 6, 8]                  , ungerade):  0 - Erwartet  0 -> OK
+
+
+Tests mit cutBy5    28.03.2023 01:04:08,487
+================
+cutBy5([1, 2, 3, 4, 5]          ): [1, 2, 3, 4]     - Erwartet [1, 2, 3, 4]     -> OK
+cutBy5([5, 4, 3, 2, 1]          ): []               - Erwartet []               -> OK
+cutBy5([1, 2, 1, 2, 1, 5, 1, 2] ): [1, 2, 1, 2, 1]  - Erwartet [1, 2, 1, 2, 1]  -> OK
+cutBy5([5, -5]                  ): []               - Erwartet []               -> OK
+cutBy5([-5, 5]                  ): [-5]             - Erwartet [-5]             -> OK
+cutBy5([-5, 1, 2, 3, 4, 5, 6]   ): [-5, 1, 2, 3, 4] - Erwartet [-5, 1, 2, 3, 4] -> OK
+cutBy5([5]                      ): []               - Erwartet []               -> OK
+
+
+Tests mit getBiggestDiff    28.03.2023 01:04:08,487
+========================
+     _.--""--._
+    /  _    _  \
+ _  ( (_\  /_) )  _
+{ \._\   /\   /_./ }
+/_"=-.}______{.-="_\      laut RuntimeConfig noch nicht implementiert
+ _  _.=("""")=._  _
+(_'"_.-"`~~`"-._"'_)
+ {_"            "_}
+
+
+Tests mit setTen    28.03.2023 01:04:08,487
+================
+setTen([1, 10, 4, 5, 30, 6]        ):  [1, 10, 10, 10, 30, 30]           - Erwartet [1, 10, 10, 10, 30, 30]           -> OK
+setTen([2, 10, 3, 4, 20, 5]        ):  [2, 10, 10, 10, 20, 20]           - Erwartet [2, 10, 10, 10, 20, 20]           -> OK
+setTen([10, 1, 20, 2]              ):  [10, 10, 20, 20]                  - Erwartet [10, 10, 20, 20]                  -> OK
+setTen([1, 10, 4, 5, 30, 6]        ):  [1, 10, 10, 10, 30, 30]           - Erwartet [1, 10, 10, 10, 30, 30]           -> OK
+setTen([10, 10]                    ):  [10, 10]                          - Erwartet [10, 10]                          -> OK
+setTen([10, 1, 20, 2, 30, 3, 40, 4]):  [10, 10, 20, 20, 30, 30, 40, 40]  - Erwartet [10, 10, 20, 20, 30, 30, 40, 40]  -> OK
+setTen([0, 2]                      ):  [0, 0]                            - Erwartet [0, 2]                            -> FEHLER! FEHLER! FEHLER!
+setTen([1, 2, 100, 1, 6]           ):  [1, 2, 100, 100, 100]             - Erwartet [1, 2, 100, 100, 100]             -> OK
+
+
+Tests mit array2int    28.03.2023 01:04:08,488
+===================
+array2int([1, 2, 3, 4]         ):    1234 - Erwartet    1234 -> OK
+array2int([1, 2, 0, 4]         ):    1204 - Erwartet    1204 -> OK
+array2int([1, 9, 3, 4]         ):    1934 - Erwartet    1934 -> OK
+array2int([1, -2, -3, 4]       ):    1004 - Erwartet    1004 -> OK
+array2int([]                   ):       0 - Erwartet       0 -> OK
+array2int(null                 ):       0 - Erwartet       0 -> OK
+array2int([5, 6, 7, 1, 2, 3, 4]): 5671234 - Erwartet 5671234 -> OK
+
+
+Tests mit getOddOrEven    28.03.2023 01:04:08,489
+======================
+getOddOrEven([1, 2], [1, 2, 3, 4], [1], [1, 2, 3]                     , ungerade): [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]                                                                - Erwartet [1, 1, 3, 1, 1, 3]       -> FEHLER! FEHLER! FEHLER!
+getOddOrEven([1, 3], [5, 1], [1, 3]                                   , gerade  ): [0, 0, 0]                - Erwartet []                       -> FEHLER! FEHLER! FEHLER!
+getOddOrEven([]                                                       , gerade  ): [0]                      - Erwartet []                       -> FEHLER! FEHLER! FEHLER!
+getOddOrEven(null                                                     , ungerade): []                       - Erwartet []                       -> OK
+getOddOrEven([1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 2, 3, 4], [1], [1, 2, 3], ungerade): [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]                                                                                                                                                          - Erwartet [2, 4, 6, 8, 2, 4, 2]    -> FEHLER! FEHLER! FEHLER!
+getOddOrEven([99, 2], [100, 82, 43, 44, 7, 8, 9], [1], [1, 2, 3]      , ungerade): [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]                                                                                                       - Erwartet [99, 43, 7, 9, 1, 1, 3]  -> FEHLER! FEHLER! FEHLER!
+getOddOrEven([1], [1, 2], [1, 2, 3], [1, 2, 3, 4], [1, 2, 3, 4, 5]    , ungerade): [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]                                                                                     - Erwartet [2, 2, 2, 4, 2, 4]       -> FEHLER! FEHLER! FEHLER!

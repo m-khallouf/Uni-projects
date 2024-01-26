@@ -1,0 +1,345 @@
+4. Aufgabe, eine mögliche Musterlösung
+AlphabetZahlen
+int zeile = 20;  // Hilfsvariable um die Ausgabe in Zeilen machen nzu können
+
+boolean grossesAlphabet = false;
+boolean kleinesAlphabet = false;
+boolean alleZahlen = false;
+boolean rueckwaerts = false;
+boolean loeschen = false;
+boolean waagrecht = false;
+
+
+void setup(){
+  size(800,800);
+  background(0);
+  textSize(20);
+}
+
+void draw(){
+  background(0);
+  // "Menü" einblenden
+  fill((grossesAlphabet ? color(100, 100, 255) : color(255)));
+  text("(A) - grosses Alphabet", 600, 20);
+  fill((kleinesAlphabet ? color(100, 100, 255) : color(255)));
+  text("(a) - kleines Alphabet", 600, 40);
+  fill((alleZahlen ? color(100, 100, 255) : color(255)));
+  text("(z) - Zahlen", 600, 60);
+  fill((rueckwaerts ? color(100, 100, 255) : color(255)));
+  text("(r) - alles rückwärts", 600, 80);
+  fill((waagrecht ? color(100, 100, 255) : color(255)));
+  text("(w) - alles waagrecht", 600, 100);
+  fill((loeschen ? color(100, 100, 255) : color(255)));
+  text("(l) - alles löschen", 600, 120);
+ 
+  fill(255);
+  if (grossesAlphabet){
+    zeile = 20;
+    for(char ch = 'A'; ch <= 'Z' ; ch++){
+      text(ch,20,zeile);
+      zeile+=20;    
+    }    
+  }
+  if (kleinesAlphabet){
+    zeile = 20;
+    for(char ch = 'a'; ch <= 'z' ; ch++){
+      text(ch,120,zeile);
+      zeile+=20;    
+    }
+  }
+  if(alleZahlen){
+    zeile = 20;
+    for (int i = 0; i < 10; i++){
+      text(i, 220,zeile);
+      zeile+=20;
+    }
+  }
+  if(rueckwaerts){
+    zeile = 20;
+    char klein = 'z';
+    char gross = 'Z';
+    int zahl = 9;
+    while(klein >= 'a'){
+      text(klein--,70,zeile);
+      text(gross--,170,zeile);
+      if(zahl >= 0)
+        text(zahl--, 270,zeile);
+      zeile += 20;  
+    }
+  }
+  if(waagrecht){
+    int spalte = 20;
+    char klein = 'a';
+    char gross = 'A';
+    int zahl = 0;
+    do{
+      text(klein++,spalte,600);
+      text(gross++,spalte,630);
+      if(zahl <= 9)
+        text(zahl++, spalte,660);
+      spalte += 20;  
+    } while(klein <= 'z');
+      
+  }
+}
+
+void keyPressed(){
+  // Tastendrücke auswerten
+  // für die einzelnen Menüpunkitze wurden jeweils Boolsche Variablen angelegt.
+  // Diese Variablen werden hier umgesetzt, das eigentliche Zeichen passiert immer im draw()
+  switch(key){
+    case 'a':
+      kleinesAlphabet = !kleinesAlphabet;
+      break;
+    case 'A':
+      grossesAlphabet = !grossesAlphabet;
+      break;
+    case 'z' :
+      alleZahlen = !alleZahlen;
+      break;
+    case 'r' :
+      rueckwaerts = !rueckwaerts;
+      break;
+    case 'l':
+      // löschen heiß in dem Fall nichts mehr anzeigen, also alle Steuervariablen auf false setzen
+      grossesAlphabet = false;
+      kleinesAlphabet = false;
+      alleZahlen = false;
+      rueckwaerts = false;
+      waagrecht = false;
+      break;
+    case 'w':
+      waagrecht = true;
+  }
+}
+
+
+
+Aristoteles
+String wort = "Die";
+int schritt = 1;
+
+void setup(){
+  size(400,400);
+  // Fenster zentriert ausgebn
+  surface.setLocation( (displayWidth - width) / 2, (displayHeight - height) / 2);
+  textSize(60);
+  textAlign(CENTER,CENTER);
+}
+
+void draw(){
+  background(0);
+  text(wort,width/2,height/2);
+}
+
+void keyPressed(){
+  // Tasten auswerten
+  if(key == 'v'){
+    textSize(60);
+    // falls es noch vorwärts geht, einen Schritt weiter, sonst wieder vorne anfangen
+    if (schritt < 11)
+      schritt++;
+    else
+      schritt = 1;
+  }
+  // falls es noch rückwärts geht, einen Schritt weiter, sonst wieder hinten anfangen
+  if (key == 'r'){
+    textSize(60);
+    if (schritt > 1)
+      schritt--;
+    else
+      schritt = 11;
+  }
+  if(key == 'k'){
+    wort = "Die Wurzeln der Bildung sind bitter,\naber ihre Früchte sind süß.\n- Aristoteles -";
+    textSize(25);
+    schritt = 0;
+  }
+  // Die Wurzeln der Bildung sind bitter, aber ihre Früchte sind süß.
+  // Je nach Schritt die Stringvariable mit einem Wort belegen
+  switch(schritt){
+    case 1:
+      wort = "Die";
+      break;
+    case 2:
+      wort = "Wurzeln";
+      break;
+    case 3:
+      wort = "der";
+      break;
+    case 4:
+      wort = "Bildung";
+      break;
+    case 5:
+      wort = "sind";
+      break;
+    case 6:
+      wort = "bitter";
+      break;
+    case 7:
+      wort = "aber";
+      break;
+    case 8:
+      wort = "ihre";
+      break;
+    case 9:
+      wort = "Früchte";
+      break;
+    case 10:
+      wort = "sind";
+      break;
+    case 11:
+      wort = "süß";
+      break;
+  }
+  //println("Schritt : " + schritt);
+}
+
+void mousePressed(){
+  exit();
+}
+
+
+
+Loops
+void setup() {
+  //size(800,800);
+  System.out.printf("Ausgabe mit for / while / do While\n");
+  System.out.printf("FOR\n");
+  for (int i = 1; i <= 5; i++) {
+    System.out.printf("%2d. Zeile: Programmieren Praktikum\n", i);
+  }
+ 
+  System.out.printf("\nWHILE\n");
+  int i = 1;
+  while (i < 6) {
+    System.out.printf("%2d. Zeile: Programmieren Praktikum\n", i++);
+  }
+ 
+  System.out.printf("\nDO WHILE\n");
+  i = 1;
+  do {
+    System.out.printf("%2d. Zeile: Programmieren Praktikum\n", i++);
+  } while (i < 6);
+
+  System.out.printf("\nAusgabe mit for / while / do While - RÜCKWÄRTS\n");
+  System.out.printf("FOR\n");
+  for ( i = 5; i > 0; i--) {
+    System.out.printf("%2d. Zeile: Programmieren Praktikum\n", 6-i);
+  }
+  System.out.printf("\nWHILE\n");
+  i = 5;
+  while (i > 0) {
+    System.out.printf("%2d. Zeile: Programmieren Praktikum\n", 6-i--);
+  }
+  System.out.printf("\nDO WHILE\n");
+  i = 5;
+  do {
+    System.out.printf("%2d. Zeile: Programmieren Praktikum\n", 6-i--);
+  } while (i > 0);
+
+  System.out.printf("\nProgrammieren Praktikum - zeichenweise rückwärts\n");
+  String einText = "Programmieren Praktikum";
+  for (i = einText.length()-1; i >= 0; i--)
+    System.out.printf("%c", einText.charAt(i));
+
+  System.out.printf("\n\nDas kleine einmaleins\n");
+  for (i = 1; i <= 10; i++) {
+    for (int n = 1; n <= 10; n++) {
+      System.out.printf("%2d * %2d = %3d\t", i, n, i*n);
+    }
+    System.out.printf("\n");
+  }
+ 
+  System.out.printf("\nZahlenreihen\n");
+  System.out.printf("Vorgabe: 1  -2  4  -8\n");
+  for ( i = 1; i <= 10; i*=-2)
+    System.out.printf("%d  ", i);
+
+  System.out.printf("\n\nVorgabe: 1   3   9  27  81  243\n");
+  for (i = 1; i < 300; i = i * 3)
+    System.out.printf("%2d  ", i);
+  System.out.printf("\n\nVorgabe: 1  -5  25  -125  625  -3125\n");
+  for (i = 1; i < 1000; i = i * -5)
+    System.out.printf("%2d  ", i);
+    
+  System.out.printf("\n\nVorgabe: 2  8  4  16  8  32  16\n");  
+  i = 1;
+  int n = 2;
+  do {
+    System.out.printf("%d  ", n);
+    if (i++ % 2 == 1)
+      n *=4;
+    else
+      n /=2;
+  } while (n < 50);
+
+  System.out.printf("\n\nVorgabe  -4 -3 -1 3 11 27 59:\n");
+  int d = 0;
+  for ( d=1, i = -4 ; i<=101; i+=d, d=2*d) {
+    System.out.printf("%d  ", i);
+  }
+ 
+  int dreier = 0;
+  int fuenfer = 0;
+  int beide = 0;
+  System.out.printf("\n\nWelche Zahlen von 1 bis 30 sind durch 3 oder 5 ohne Rest teilbar?\n");
+  for(i= 1; i <= 30;i++){
+    // Bedingung mit beiden  Zahlen muss am Anfang stehen, sonst wird falsch gezählt
+    if(i % 3 == 0 && i % 5 == 0) {
+      System.out.printf("drei und fünf\n");
+      dreier++;
+      fuenfer++;
+      beide++;
+    }
+    else if(i % 3 == 0) {
+      System.out.printf("drei\n");
+      dreier++;
+    }
+    else if(i % 5 == 0) {
+      System.out.printf("fünf\n");
+      fuenfer++;
+    }
+    else
+      System.out.printf("%d\n",i);
+  }
+  System.out.printf("%% 3 ohne Rest:        %2d\n",dreier);
+  System.out.printf("%% 5 ohne Rest:        %2d\n",fuenfer);
+  System.out.printf("%% 5 und 3 ohne Rest:  %2d\n",beide);
+ 
+  System.out.printf("\n\nNarzistische Zahlen (oder Armstrongzahlen) von 1 bis 100.000\n");
+  int exponent = 0;
+  for(i = 1; i < 100000; i++){
+    // so könnte man den Exponent bestimmen, aber da ist bei 6 Stellen Schluß
+    /*
+    if( i < 10)
+      exponent = 1;
+    if( i >= 10 && i < 100)
+      exponent = 2;
+    if( i >= 100 && i < 1000)
+      exponent = 3;
+    if( i >= 1000 && i < 10000)
+      exponent = 4;
+    if (i >= 10000)
+      exponent = 5;
+      */
+    // so ist es allgemeingültiger  
+    exponent = (""+i).length();
+    int narzistischeZahl = 0;  
+    int check = i;
+    while (check > 0) {
+      // letzte Ziffer bestimmen
+      int letzteZiffer = check % 10;
+      int erg = letzteZiffer;
+      for(n = 1; n < exponent; n++)
+        erg = erg * letzteZiffer;
+      narzistischeZahl += erg;  
+      // letzteZiffer abschneiden
+      check = check / 10;
+    }
+    if (narzistischeZahl == i)
+      System.out.printf("%d  ",i);
+    
+  }
+  exit();
+}

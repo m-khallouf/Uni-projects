@@ -1,0 +1,574 @@
+6. Aufgabe, eine mögliche Musterlösung
+  /**
+   *
+   * <pre>
+   * Methodenname: <B>getFactorial</B>  --<I><U> 08.12.2022 </U></I>--<BR>
+   * Autor: <font color="red" SIZE="+1">Gurn</font>
+   * </pre>
+   *
+   * <B>Beschreibung:</B> <BLOCKQUOTE>Fakultät für übergebene Zahl berechnen </BLOCKQUOTE>
+   *
+   * <pre>
+   * @param factorial    - Zahl für die die Fakultät berechnet werden soll
+   * @return long          - berechnete Fakultät
+   * </pre>
+   */
+long getFactorial(long factorial) {
+
+  long result = 1;
+  // Fakultät berechnen, n! = n * ( n - 1 ) * ( n - 2 ) * … *3 * 2 * 1
+  for (int i = 1; i <= factorial; i++) {
+    result = result * i;
+  }
+
+  return result;
+}
+
+
+/**
+   *
+   * <pre>
+   * Methodenname: <B>existWi</B>  --<I><U> 08.12.2022 </U></I>--<BR>
+   * Autor: <font color="red" SIZE="+1">Gurn</font>
+   * </pre>
+   *
+   * <B>Beschreibung:</B> <BLOCKQUOTE>Das Vorkommen von "Wi" (nicht casesensitiv) wird in einem String überprüft </BLOCKQUOTE>
+   *
+   * <pre>
+   * @param anyText  - String in dem auf "Wi" geprüft wird
+   * @return boolean - True -> "Wi" ist enthalten
+   *                              - False -> "Wi" ist nicht enthalten
+   * </pre>
+   */
+boolean existWi(String anyText) {
+  // null abfangen
+  if (anyText == null)
+    return false;
+    
+  boolean bexistWi = false;
+  // da nicht casesensitiv, alles in KleinBuchstaben umwandeln
+  anyText = anyText.toLowerCase();
+  // anyText.length() - 1, da in der Schleife Zugriff auf Zeichen bei i+1
+  for(int i = 0;i < anyText.length() - 1; i++){
+    if(anyText.charAt(i) == 'w' && anyText.charAt(i+1) == 'i') {
+      bexistWi = true;
+      // Treffer gefunden , Rest vom String muss nicht mehr ausgewertet werden
+      break;
+    }
+  }
+  return bexistWi;
+}
+
+
+/**
+   *
+   * <pre>
+   * Methodenname: <B>count5or7</B>  --<I><U> 08.12.2022 </U></I>--<BR>
+   * Autor: <font color="red" SIZE="+1">Gurn</font>
+   * </pre>
+   *
+   * <B>Beschreibung:</B> <BLOCKQUOTE>Anzahl der Ziffern 5 und 7 in einer Zahl zählen</BLOCKQUOTE>
+   *
+   * <pre>
+   * @param number  - Zahl in der die Anzahl bestimmt werden soll
+   * @return int           - gefundene Anzahl
+   * </pre>
+   */
+int count5or7(int number){
+  int counter = 0;
+  // negative Zahl in positive wandeln
+  if (number < 0)
+    number *= -1;
+ 
+  // Zahl in Einzelziffern zerlegen und diese dann auf 5 oder 7 prüfen
+  while(number > 0){    
+    if (number % 10 == 5 || number % 10 == 7)
+      counter++;
+    number /= 10;
+  }
+  return counter;
+}
+
+
+  /**
+   *
+   * <pre>
+   * Methodenname: <B>getCharCount</B>  --<I><U> 08.12.2022 </U></I>--<BR>
+   * Autor: <font color="red" SIZE="+1">Gurn</font>
+   * </pre>
+   *
+   * <B>Beschreibung:</B> <BLOCKQUOTE>In einem String wird je nach mode die Anzahl der Zeichen gezählt </BLOCKQUOTE>
+   *
+   * <pre>
+   * @param anyText    - String in dem Zeichen gezählt werden
+   * @param mode       - Steuert, was gezählt werden soll
+   *                                  1 - Großbuchstaben
+   *                                  2 - Kleinbuchstaben
+   *                                  3 - Ziffern
+   *                                  4 - alles andere   
+   * @return int            - Anzahl der gefundenen Zeichen
+   * </pre>
+   */
+int getCharCount(String anyText, int mode){
+  int counter = 0;
+ 
+  // null abfangen  
+  if (anyText != null){
+    // jedes Zeichen betrachten
+    for(int i = 0; i < anyText.length(); i++){      
+      switch(mode){
+        case 1 :
+          if (Character.isUpperCase(anyText.charAt(i)))
+            counter++;
+          break;
+        case 2 :
+          if (Character.isLowerCase(anyText.charAt(i)))
+            counter++;
+          break;
+        case 3 :
+          if (Character.isDigit(anyText.charAt(i)))
+            counter++;
+          break;
+        case 4 :
+          if (!Character.isUpperCase(anyText.charAt(i)) && !Character.isLowerCase(anyText.charAt(i)) && !Character.isDigit(anyText.charAt(i)))
+            counter++;
+          break;
+        default:
+          counter = 0;
+          break;
+      }
+    }
+  }
+  return counter;
+}
+
+
+/**
+   *
+   * <pre>
+   * Methodenname: <B>getWithoutVowel</B>  --<I><U> 08.12.2022 </U></I>--<BR>
+   * Autor: <font color="red" SIZE="+1">Gurn</font>
+   * </pre>
+   *
+   * <B>Beschreibung:</B> <BLOCKQUOTE>Bei einem übergebenen String werden große oder kleine Vokale gelöscht </BLOCKQUOTE>
+   *
+   * <pre>
+   * @param textWithVowel  - String der auf Vokal geprüft wird
+   * @param bOnlySmall     - Steuert ob große oder kleine Vokale gelöscht werden
+   *                                         - True -> große Vokale löschen
+   *                                         - False -> kleine Vokale löschen
+   * @return String        - Strring ohne Vokale
+   * </pre>
+   */
+String getWithoutVowel(String textWithVowel, boolean bOnlySmall){
+  String result = "";
+  // Vergleichsstring mit Vokalen besetzen
+  String vowels = (bOnlySmall ? "aeiou" : "AEIOU");
+  boolean bVowel = false;
+ 
+  // null oder Länge = 0 abfangen
+  if( textWithVowel == null || textWithVowel.length() == 0)
+    return result;
+  // jedes Zeichen aus dem String mit den Vokalen aus dem Vergleichsstring prüfen    
+  for(int i = 0; i < textWithVowel.length(); i++){
+    for(int n = 0; n < vowels.length(); n++){
+      if(textWithVowel.charAt(i) == vowels.charAt(n)){
+        bVowel = true;
+        // Vokal gefunden, Schleife kann abgebrochen werden
+        break;
+      }
+    }
+    // Wenn es kein Vokal ist, in den Rückgabestring kopieren
+    if (!bVowel)
+      result += textWithVowel.charAt(i);
+    bVowel = false;
+  }
+  return result;
+}
+
+
+/**
+   *
+   * <pre>
+   * Methodenname: <B>mixString</B>  --<I><U> 08.12.2022 </U></I>--<BR>
+   * Autor: <font color="red" SIZE="+1">Gurn</font>
+   * </pre>
+   *
+   * <B>Beschreibung:</B> <BLOCKQUOTE>Zwei Strings mischen </BLOCKQUOTE>
+   *
+   * <pre>
+   * @param firstText        - erster String für das Mischen
+   * @param secondText  - zweiter String für das Mischen
+   * @return String           - gemischter String
+   * </pre>
+   */
+String mixString(String firstText, String secondText) {
+  String result = "";
+  // leere Strings abfangen
+  if(firstText.length()== 0)
+    return secondText;
+  if (secondText.length() == 0)
+    return firstText;
+ 
+  // welches ist der längere String
+  int maxlen = (firstText.length() > secondText.length() ? firstText.length() : secondText.length());
+  // Schleife über die Strings
+  for(int i = 0; i < maxlen; i++){
+    if ( i < firstText.length() )
+      result = result + firstText.charAt(i);  
+    if ( i < secondText.length() )
+      result = result + secondText.charAt(i);  
+  }
+  return result;
+}
+
+
+/**
+   *
+   * <pre>
+   * Methodenname: <B>repeatStart</B>  --<I><U> 08.12.2022 </U></I>--<BR>
+   * Autor: <font color="red" SIZE="+1">Gurn</font>
+   * </pre>
+   *
+   * <B>Beschreibung:</B> <BLOCKQUOTE>kleiner werdende Anfangsteile des Strings wiederholen </BLOCKQUOTE>
+   *
+   * <pre>
+   * @param anyText  - String von dem Anfangsteile zusammegefügt werden
+   * @param counter  - Wie oft solle es wiederholt werden
+   * @return String      - zusammengefügter String
+   * </pre>
+   */
+String repeatStart(String anyText, int counter) {
+  // String mit Länge 0 abfangen
+    if (anyText.length() == 0)
+      return "";
+      
+    String result = "";
+    int copyLength = counter;
+    
+    // Schleife zum Kopieren mit immer kleiner werdender Länge
+    for (int i = 0; i < counter; i++) {
+      result+= anyText.substring(0,copyLength);
+      copyLength--;
+    }
+    return result;
+}
+
+
+/**
+   *
+   * <pre>
+   * Methodenname: <B>getPairs</B>  --<I><U> 08.12.2022 </U></I>--<BR>
+   * Autor: <font color="red" SIZE="+1">Gurn</font>
+   * </pre>
+   *
+   * <B>Beschreibung:</B> <BLOCKQUOTE>Von einem String werden Zeichenpaare herauskopiert</BLOCKQUOTE>
+   *
+   * <pre>
+   * @param anyText  - String aus dem die Zeichenpaare kopiert werden
+   * @return String     - String mit den herauskopierten Zeichen
+   * </pre>
+   */
+String getPairs(String anyText) {
+  String result = "";
+  // String sollte mindestens 2 Zeichen enthalten
+  if (anyText.length() < 2)
+    return anyText;
+ 
+  // Stepweite 4  
+  for(int i = 0; i < anyText.length(); i += 4){
+    // gibt es noch ein Paar?, dann 2 Zeichen sonst 1 Zeichen kopieren
+    if (i < anyText.length() - 1)
+      result +=  anyText.substring(i, i + 2);
+    else
+      result +=  anyText.substring(i, i + 1);
+  }
+  return result;
+}
+
+
+
+/**
+   *
+   * <pre>
+   * Methodenname: <B>replaceChar</B>  --<I><U> 08.12.2022 </U></I>--<BR>
+   * Autor: <font color="red" SIZE="+1">Gurn</font>
+   * </pre>
+   *
+   * <B>Beschreibung:</B> <BLOCKQUOTE>In einem String Zeichen durche ein anderes Zeichen ersetzen</BLOCKQUOTE>
+   *
+   * <pre>
+   * @param anyText       - String in dem Zeichen ausgetauscht werden sollen
+   * @param deleteChar  - Zeichen das getauscht werden soll
+   * @param newChar     - Zeichen das eingesetzt werden soll
+   * @return String          - String mit den getauschten Zeichen
+   * </pre>
+   */
+String replaceChar(String anyText, char deleteChar, char newChar) {
+  String result = "";
+ 
+  // null/Stringlänge 0 abfangen
+  if(anyText == null || anyText.length() == 0)
+    return result;
+    
+    
+  for (int i = 0; i < anyText.length(); i++) {
+    // ist das aktuelle Zeichen das zu tauschende Zeichen?  falls ja tauschen - sonst wieder einfügen
+    if (anyText.charAt(i) == deleteChar)
+      result += newChar;
+    else
+      result += anyText.charAt(i);
+  }
+
+  return result;
+}
+
+
+
+/**
+   *
+   * <pre>
+   * Methodenname: <B>mixNumber</B>  --<I><U> 08.12.2022 </U></I>--<BR>
+   * Autor: <font color="red" SIZE="+1">Gurn</font>
+   * </pre>
+   *
+   * <B>Beschreibung:</B> <BLOCKQUOTE>Zwei Zahlen mischen </BLOCKQUOTE>
+   *
+   * <pre>
+   * @param firstNumber      - erste Zahl zum Mischen
+   * @param secondNumber - zweite Zahl zum Mischen
+   * @return long                   - gemischte Zahl
+   * </pre>
+   */
+long mixNumber(int firstNumber, int secondNumber) {
+  boolean negativ = false;
+  // eine Zahl negativ? -> merken
+  if(firstNumber < 0 || secondNumber < 0){
+    negativ = true;
+  }
+  // Zahlen in Striongs umwandeln
+  String numberOne = Integer.toString(abs(firstNumber));
+  String numberTwo = Integer.toString(abs(secondNumber));
+  String result = "";
+  // längsten String bestimmen
+  int maxlen = (numberOne.length() > numberTwo.length() ? numberOne.length() : numberTwo.length());
+ 
+  for (int i = 0; i < maxlen; i++) {
+    // wenn noch Ziffern zum Mischen da sind, diese kopieren
+    if ( i < numberOne.length() )
+      result = result + numberOne.charAt(i);  
+    if ( i < numberTwo.length() )
+      result = result + numberTwo.charAt(i);
+  }
+  long l = Long.parseLong(result);
+  // War eine Zahl negativ? dann wieder negieren
+  if (negativ)
+    l = -l;
+  return l;
+}
+
+
+/**
+   *
+   * <pre>
+   * Methodenname: <B>delDoubleChar</B>  --<I><U> 08.12.2022 </U></I>--<BR>
+   * Autor: <font color="red" SIZE="+1">Gurn</font>
+   * </pre>
+   *
+   * <B>Beschreibung:</B> <BLOCKQUOTE>Mehrfach vorkommende Zeichen in einem String löschen </BLOCKQUOTE>
+   *
+   * <pre>
+   * @param anyText  - String, der auf mehrfach vorkommende Zeichen untersucht wird
+   * @return String     - String ohne mehrfach vorkommende Zeichen
+   * </pre>
+   */
+String delDoubleChar(String anyText) {
+  // null/Stringlänge 0 abfangen
+  if (anyText == null || anyText.length() == 0)
+    return anyText;
+
+  String result = "";
+
+  // erstes Zeichen gleich kopieren
+  result +=  anyText.charAt(0);
+  // letztes Zeichen aus neuem String mit aktuellem Zeichen vergleichen
+  // und gegebenenfalls kopieren
+  for (int i=1; i<anyText.length(); i++) {
+    if (anyText.charAt(i) != result.charAt(result.length() -1))
+      result +=  anyText.charAt(i);
+  }
+
+  return result;
+}
+
+
+/**
+   *
+   * <pre>
+   * Methodenname: <B>countDigit</B>  --<I><U> 08.12.2022 </U></I>--<BR>
+   * Autor: <font color="red" SIZE="+1">Gurn</font>
+   * </pre>
+   *
+   * <B>Beschreibung:</B> <BLOCKQUOTE>Ziffern, also Zahlen, in einem String akkumulieren </BLOCKQUOTE>
+   *
+   * <pre>
+   * @param anyText  - String in dem die Ziffern gezählt werden sollen
+   * @return int          - akkumulierte Zahlen
+   * </pre>
+   */
+int countDigit(String anyText) {
+  int result = 0;
+    
+  for (int i = 0; i < anyText.length(); i++) {
+    // ist das aktuelle Zeichen eine Zahl, dann addieren
+    // die Zahlen fangen in der Asciitabelle bei 48 an, daher erst mal - 48
+    if (Character.isDigit(anyText.charAt(i))) {
+      result += (int)(anyText.charAt(i) - 48);
+    }
+  }
+  return result;
+}
+
+
+/**
+   *
+   * <pre>
+   * Methodenname: <B>replaceWithWhatever</B>  --<I><U> 08.12.2022 </U></I>--<BR>
+   * Autor: <font color="red" SIZE="+1">Gurn</font>
+   * </pre>
+   *
+   * <B>Beschreibung:</B> <BLOCKQUOTE>In einem String werden Zeichen gesucht, die stehenbleiben sollen. Alle anderen werden durch ein Zeichen ersetzt </BLOCKQUOTE>
+   *
+   * <pre>
+   * @param anyText         - String in dem gesucht und getauscht wird
+   * @param word             - Zeichen die stehenbleiben sollen
+   * @param replaceChar  - Ersetzungszeichen für die Zeichen, die gelöscht werden
+   * @return String            - String mit den ersetzten Zeichen
+   * </pre>
+   */
+String replaceWithWhatever(String anyText, String word, String replaceChar){
+    String result = "";
+    boolean bDontTouch = false;
+    
+    for(int i = 0; i < anyText.length(); i++){
+      bDontTouch = false;
+      // aktuelles Zeichen mit Zeichen die stehenbleiben sollen prüfen
+      for(int n = 0; n < word.length(); n++){
+        if (word.charAt(n) == anyText.charAt(i)){
+            bDontTouch = true;
+            // ein Zeichen gefunden, Schleife beenden
+            break;
+        }
+      }
+      // kein Zeichen gefunden, dass stehenbleiben soll -> Zeichen ersetzen
+      if(!bDontTouch)
+        result += replaceChar;
+      else
+        result += anyText.charAt(i);
+    }
+
+    return result;
+}
+
+
+/**
+   *
+   * <pre>
+   * Methodenname: <B>isPalindrom</B>  --<I><U> 08.12.2022 </U></I>--<BR>
+   * Autor: <font color="red" SIZE="+1">Gurn</font>
+   * </pre>
+   *
+   * <B>Beschreibung:</B> <BLOCKQUOTE>Ist der übergebene String ein Palindrom? </BLOCKQUOTE>
+   *
+   * <pre>
+   * @param anyText        - String der geprüft wird, ob es ein Palindrom ist
+   * @param bCaseSensitiv  - soll die Prüfung casesensitiv sein?
+   *                                          - True -> Groß-Kleinschreibung beachten
+   *                                          - False -> Groß-Kleinschreibung nicht beachten
+   * @return
+   * </pre>
+   */
+boolean isPalindrom(String anyText, boolean bCaseSensitiv) {
+  // null/Stringlänge 0 abfangen
+  if ((anyText == null) || (anyText.length() == 0)) {
+    return false;
+  } else {
+    // Groß-/Kleinschreibung beachten
+    if (!bCaseSensitiv) {
+      anyText = anyText.toUpperCase();
+    }
+
+    // doppelte Arbeit -> Nein danke
+    int nLength = anyText.length() / 2;
+
+    for (int i = 0; i < nLength; i++) {
+      if (anyText.charAt(i) != anyText.charAt(anyText.length() - 1 - i)) {
+        // beim ersten ungleichen Zeichenpaar aufhören, es kann kein
+        // Palindrom mehr werden
+        return false;
+      }
+    }
+  }
+  // durchgekommen - es ist ein Palindrom
+  return true;
+}
+
+
+/**
+   *
+   * <pre>
+   * Methodenname: <B>testPassword</B>  --<I><U> 08.12.2022 </U></I>--<BR>
+   * Autor: <font color="red" SIZE="+1">Gurn</font>
+   * Datei: <B>StringVergleich.java</B>
+   * </pre>
+   *
+   * <B>Beschreibung:</B> <BLOCKQUOTE>Die Qualität eines Passworts soll geprüft werden </BLOCKQUOTE>
+   *
+   * <pre>
+   * @param password    - String mit dem zu prüfenden Passwort
+   * @param minLength   - geforderte Mindestlänge des Passwortes
+   * @param minChar       - vorgegebene Mindestanzahl Buchstaben
+   * @param minDigit      - vorgegebene Mindestanzahl Ziffern
+   * @return boolean       - Genügt das Passwort den Forderungen
+   *                                      - True -> ja
+   *                                      - False -> Nein
+   * </pre>
+   */
+boolean testPassword(String password, int minLength, int minChar, int minDigit) {
+  // je geforderte Kategorie ein Zähler
+  int countCapitalLetter = 0;
+  int countSmallLetter = 0;
+  int countDigit = 0;
+  int countSpecialChar = 0;
+  // null/Stringlänge kleiner Mindespasswortlänge, mind. 2 Zahlen und mind. 2 Buchstaben abfangen,
+  if(password ==null || password.length() < minLength || minDigit < 2 || minChar < 2)
+    return false;
+    
+  for (int i = 0; i < password.length(); i++) { // Anzahl Gross-/Kleinbuchstaben, Ziffern und Sonderzeichen zählen
+    char ch = password.charAt(i);
+    // Ziffern zählen
+    if ( Character.isDigit(ch)) {
+      countDigit++;
+    }
+    // Kleinbuchstaben zählen
+    if ( Character.isLowerCase(ch)) {
+      countSmallLetter++;
+    }
+    // Großbuchstaben zählen
+    if ( Character.isUpperCase(ch)) {
+      countCapitalLetter++;
+    }
+    // alle anderen Zeichen zählen
+    if (!Character.isLetterOrDigit(ch)) {
+      countSpecialChar++;
+    }
+  }
+  // alle Kriterien checken
+  if(password.length() >= minLength && (countCapitalLetter + countSmallLetter) >= minChar && countDigit >= minDigit && countCapitalLetter >= 1 && countSmallLetter >= 1 && countSpecialChar >= 1){
+    return true;
+  }
+  else {
+    return false;
+  }
+}  
+   

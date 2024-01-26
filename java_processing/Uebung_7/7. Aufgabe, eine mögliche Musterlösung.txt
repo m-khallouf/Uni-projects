@@ -1,0 +1,639 @@
+7. Aufgabe, eine mögliche Musterlösung
+/**
+  *
+  * <pre>
+  * Methodenname: <B>convertDez2Dual</B>  --<I><U> 10.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Eine ganze Zahl wird in eine Dualzahl gewandelt und als String zurückgegeben </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param zahl      - Zahl, die umgewandelt werden soll
+  * @return String    - Binärzahl als String zurückgeben
+  * </pre>
+  *
+  */
+String convertDez2Dual(int zahl) {
+  String strDual = "";
+  zahl = Math.abs(zahl);
+ 
+  // Zahl in die einzelnen Ziffern zerlegen
+  while (zahl > 0) {
+    // Bei strDual += ... würde der Binärstring falsch herum aufgebaut
+    strDual = (zahl % 2) + strDual; // Dezimalzahl mit 10, Dualzahl mit 2, Oktalzahl mit 8 zerlegen...
+    zahl = zahl / 2;    
+  }
+
+  return strDual;
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>convertBin2Dez</B>  --<I><U> 10.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Eine Dualzahl wird als String übergeben und in eine int-Zahl gewandelt </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param dualZahl    - String mit der zu wandelnden Binärzahl
+  * @return int               - umgewandelte Zahl
+  * </pre>
+  *
+  */
+int convertBin2Dez(String dualZahl) {
+  int zahl = 0;
+  for (int i = dualZahl.length() - 1; i >= 0; i--) {
+    // nur bei einer '1' muß potenziert werden
+    if (dualZahl.charAt(i) != '0') {
+      // da wir am Stringende anfangen, ist der Exponent Länge - 1 - Laufvariable
+      // Bei "0000000000000001" muss bei der letzten '1' mit 2^0 gerechnet werden, also 2^(16-1-15) -> 2^0 = 1
+      zahl += pow(2, dualZahl.length() - 1 - i);
+    }
+  }
+  return(zahl);
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>getCrossSum</B>  --<I><U> 10.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Quersumme einer byte-Zahl ermitteln </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param number    - Zahl, deren Quersumme berechnet werden soll
+  * @return short          - berechnete Quersumme
+  * </pre>
+  *
+  */
+short getCrossSum(byte number) {
+  // Bei der Quersumme ist das Vorzeichen egal
+  if (number < 0)
+    number = (byte)abs(number);
+  short result = 0;
+  // Zahl in die einzelnen Ziffern zerlegen und akkumulieren
+  while (number > 0) {
+    result += (number % 10);
+    number /= 10;
+  }
+  return(result);
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>getCrossSum</B>  --<I><U> 10.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Quersumme einer short-Zahl ermitteln </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param number    - Zahl, deren Quersumme berechnet werden soll
+  * @return short          - berechnete Quersumme
+  * </pre>
+  *
+  */
+short getCrossSum(short number) {
+  // Bei der Quersumme ist das Vorzeichen egal
+  if (number < 0)
+    number = (short)abs(number);
+  short result = 0;
+  // Zahl in die einzelnen Ziffern zerlegen und akkumulieren
+  while (number > 0) {
+    result += (number % 10);
+    number /= 10;
+  }
+  return(result);
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>getCrossSum</B>  --<I><U> 10.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Quersumme einer long-Zahl ermitteln </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param number    - Zahl, deren Quersumme berechnet werden soll
+  * @return short          - berechnete Quersumme
+  * </pre>
+  *
+  */
+short getCrossSum(long number) {
+  // Bei der Quersumme ist das Vorzeichen egal
+  if (number < 0)
+    number = (long)abs(number);
+  short result = 0;
+  // Zahl in die einzelnen Ziffern zerlegen und akkumulieren
+  while (number > 0) {
+    result += (number % 10);
+    number /= 10;
+  }
+  return(result);
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>getCrossSum</B>  --<I><U> 10.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Quersumme einer Zahl in Stringform ermitteln </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyText    - Zahl, deren Quersumme berechnet werden soll
+  * @return  short        - berechnete Quersumme
+  * </pre>
+  *
+  */
+short getCrossSum(String anyText) {
+  short result = 0;
+  // null und Länge 0 abfangen
+  if (anyText == null || anyText.length() == 0)
+    return result;
+    
+  //jedes Zeichen betrachten  
+  for (int i = 0; i < anyText.length(); i++) {
+    // ist das Zeichen eine Ziffer? falls ja akkumulieren
+    if (anyText.charAt(i) >= '0' && anyText.charAt(i) <= '9') {
+      // '0' hat den Asciiwert 48, '1' den Asciiwert 49 usw., zum Rechnen also erst mal 48 abziehen
+      result += (short)(anyText.charAt(i) - 48);
+    }
+  }
+  return(result);
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>getMaxBlock</B>  --<I><U> 10.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Länge des größten Blocks mit gleichen Zeichen ermitteln </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyText    - String in dem die Blöcke gesucht werden
+  * @return int             - Anzahl der Zeichen des größten Blocks
+  * </pre>
+  *
+  */
+int getMaxBlock(String anyText) {
+  int countEqual = 0;
+  int maxCount = 0;
+  // null und Länge 0 abfangen
+  if (anyText == null || anyText.length() == 0)
+    return 0;
+
+  // Da auch das Zeichen bei (i+1) betrachtet wird, darf die Schleife nur bis zum vorletzten Zeichen laufen
+  for (int i = 0; i < anyText.length() - 1; i++) {
+    // aktuelles Zeichen und das rechts daneben vergleichen
+    if (anyText.charAt(i) == anyText.charAt(i + 1)) {
+      // noch keine gleichen Zeichen mit dem Zeichen ander Stelle i gefunden (Zähler steht noch auf 0)
+      if (countEqual == 0)
+        // da die Zeichen an der Stelle i und i+1 gleich sind, haben wird 2 gleiche Zeichen gefunden, also Anzahl 2 hinzufügfen
+        countEqual += 2;
+      else        
+        countEqual++;
+    } else {
+      // Zeichen an i und i+1 sind ungleich, d.h. wir merken uns die bisher größte gefundene Anzahl
+      maxCount = (maxCount > countEqual ? maxCount : countEqual);
+      // Zähler zuücksetzen
+      countEqual = 0;
+    }
+  }
+  // wenn in maxCount 0 steht, haben wir lauter unterschiedliche Zeichen im String, also müssen wir die 1 setzen, wenn Zeichen im String sind
+  if (maxCount == 0 && anyText.length() > 0)
+    maxCount = 1;
+
+  // Sind alle Zeichen gleich, so kommt man nie in den else-Teil vom Zeichenvergleich und
+  // maxCount wird nie gesetzt, also countEqual setzen
+  maxCount = (maxCount > countEqual ? maxCount : countEqual);
+
+  return maxCount;
+}
+
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>endsWith</B>  --<I><U> 10.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Endet ein String mit einem anderen</BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyText1        - erster Prüfstring
+  * @param anyText2        - zweiter Prüfstring
+  * @param bCaseSensitiv   - soll die Funktion Groß-/kleinschreibung beachten
+  *                                           - True -> Groß-/kleinschreibung beachten
+  *                                           - False -> Groß-/kleinschreibung egal
+  * @return boolean        - True -> String endet mit dem anderen
+  *                                     - False -> String endet nicht mit dem anderen
+  * </pre>
+  *
+  */
+boolean endsWith(String anyText1, String anyText2, boolean bCaseSensitiv) {
+  // wenn Groß-/Kleinschreibung egal ist, alles nach Kleinbuchstaben wandeln
+  if (!bCaseSensitiv) {
+    anyText1 = anyText1.toLowerCase();
+    anyText2 = anyText2.toLowerCase();
+  }
+
+  int counter = 0;
+  // kürzeres Wort am Ende des längeren suchen
+  if (anyText2.length() < anyText1.length()) {    
+    while (counter < anyText2.length()) {
+      // Die Zeichen von hinten her vergleichen, heißt ja endsWith
+      // bei counter = 0 ist (anyText2.length() - counter - 1) das letzte Zeichen, beim zweiten String entsprechend
+      // counter wird immer größer, man arbeitet sich also im String Richtung Stringanfang
+      // Beispiel: Bei "Wirtschaft" und "Schaft" werden erst die letzten Buchstaben, also t mi t, dann f mit f, a mit a usw. verglichen
+      // nach dem Vergleich von s und S ist man am Anfang des zweiten Wortes angelangt und die Schleife bricht ab, ohne dass man zu return false kommt
+      if ( (anyText2.charAt(anyText2.length() - counter - 1)) != (anyText1.charAt(anyText1.length() - counter - 1)))
+        return false;
+      counter++;
+    }
+  } else {
+    // gleiche Vorgehensweise
+    while (counter < anyText1.length()) {
+      if ( (anyText1.charAt(anyText1.length() - counter - 1)) != (anyText2.charAt(anyText2.length() - counter - 1)))
+        return false;
+      counter++;
+    }
+  }
+  // wenn man hier ankommt, bedeutet das, dass ein String am Ende des anderen vorkommt
+  return true;
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>isPangramm</B>  --<I><U> 10.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Überprüft, ob im übergebenen String alle Zeichen des Alphabets vorkommen </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyText    - String, der überprüft werden soll
+  * @return boolean   - True -> es kommen alle Zeichen des Alphabets in dem String vor
+  *                                - False -> es kommen nicht alle Zeichen des Alphabets in dem String vor
+  * </pre>
+  *
+  */
+boolean isPangramm(String anyText) {
+  // null und Länge 0 abfangen
+  if (anyText == null || anyText.length() == 0)
+    return false;
+ 
+  // Groß-/Kleinschreibung egal, also alles nach Großbuchstaben wandeln, wäre der Vergleichsstring check
+  // mit kleinen Buchstaben gefüllt, müsste man nach Kleinbuchstaben wandeln
+  String upper = anyText.toUpperCase();
+  String check = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+  int count = 0;
+  // jedes Zeichen aus anyText prüfen
+  for (int i = 0; i < upper.length(); i++) {
+    // die einzelnen Zeichen aus anyText mit allen Buchstaben aus check vergleichen
+    for(int n = 0; n < check.length(); n++){  
+      // hat man das Zeichen in check gefunden, so wird es aus dem check-String eleminiert und durch ein "-" ersetzt
+      // so können gleiche Zeichen aus anyText nicht mehrfach gezählt werden
+      if(upper.charAt(i) == check.charAt(n)){
+        String temp = "";
+        for(int j = 0; j < check.length(); j++){
+          temp += (upper.charAt(i) == check.charAt(j) ? "-" : check.charAt(j));
+        }
+        // "reduzierten" String wieder check zuweisen
+        //Beispiel "Vogel Quax zwickt Johnys Pferd Bim"
+        // nach dem ersten gefundenen Zeichen V sieht temp so aus:
+        // "ABCDEFGHIJKLMNOPQRSTU-WXYZ", nach o
+        // "ABCDEFGHIJKLMN-PQRSTU-WXYZ" nach g
+        // "ABCDEF-HIJKLMN-PQRSTU-WXYZ" nach e
+        // "ABCD-F-HIJKLMN-PQRSTU-WXYZ" usw.
+        // das e aus Pferd kann also nicht mehr gefunden werden und somit das Ergebnis nicht verfälschen        
+        check = temp;
+        count++;
+      }      
+    }
+  }
+
+  return(count == check.length());
+}
+
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>checkBrackets</B>  --<I><U> 10.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Klammerung in einem String prüfen </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyText    - String in dem die Klammerung geprüft wird
+  * @return boolean   - True -> Klammerung stimmt, d.h. zu jeder Klammer auf gibt es auch eine Klammer zu
+  *                                - False -> Klammerung stimmt nicht
+  * </pre>
+  *
+  */
+public boolean checkBrackets(String anyText) {
+  // null und Länge 0 abfangen
+  if (anyText == null || anyText.length() == 0)
+    return true;
+    
+  // Für jede Klammerform einen Zähler anlegen
+  int countOpenRoundBracket = 0; // ()
+  int countOpenCurlyBracket = 0; // {}
+  int countOpenSquareBracket = 0; // []
+  int countOpenAngleBracket = 0; // <>
+
+  // bei öffnender Klammer wird entsprechenden Zahler inkrementiert, bei schließender >Klammer dekrementiert
+  for (int i = 0; i < anyText.length(); i++) {
+    if (anyText.charAt(i) == '(') {
+      countOpenRoundBracket++;
+    } else if (anyText.charAt(i) == '{') {
+      countOpenCurlyBracket++;
+    } else if (anyText.charAt(i) == '[') {
+      countOpenSquareBracket++;
+    } else if (anyText.charAt(i) == '[') {
+      countOpenSquareBracket++;
+    } else if (anyText.charAt(i) == '<') {
+      countOpenAngleBracket++;
+    } else if (anyText.charAt(i) == ')') {
+      countOpenRoundBracket--;
+    } else if (anyText.charAt(i) == '}') {
+      countOpenCurlyBracket--;
+    } else if (anyText.charAt(i) == ']') {
+      countOpenSquareBracket--;
+    } else if (anyText.charAt(i) == '>') {
+      countOpenAngleBracket--;
+    }    
+  }
+ 
+  // Wenn die Klammerung passt, müssen alle Zähler wieder auf 0 stehen
+  return (countOpenRoundBracket == 0 && countOpenCurlyBracket == 0 && countOpenSquareBracket == 0 && countOpenAngleBracket == 0);
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>checkBracketsWC</B>  --<I><U> 10.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Klammerung in einem String prüfen, zusätzlich "Kommentarklammern"  </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyText    - String in dem die Klammerung geprüft wird
+  * @return boolean   - True -> Klammerung stimmt, d.h. zu jeder Klammer auf gibt es auch eine Klammer zu
+  *                                - False -> Klammerung stimmt nicht
+  * </pre>
+  *
+  */
+public boolean checkBracketsWC(String anyText) {
+  // null und Länge 0 abfangen
+  if (anyText == null || anyText.length() == 0)
+    return true;
+    
+  // da die anderen Klammern mit der Funktion checkBrackets() geprüft werden, brauchen wir hier nur noch /* und */ prüfen   
+  int countOpenRoundComments = 0;
+
+  for (int i = 0; i < anyText.length()-1; i++) {    
+    if (anyText.charAt(i) == '/' && anyText.charAt(i+1) == '*') {
+      countOpenRoundComments++;
+      if (anyText.length() >= i+2)
+        i++;    
+    } else if (anyText.charAt(i) == '*' && anyText.charAt(i+1) == '/') {
+      countOpenRoundComments--;
+      if (anyText.length() >= i+2)
+        i++;   
+    }
+  }
+ 
+  return (countOpenRoundComments == 0 && checkBrackets(anyText));
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>stringSort</B>  --<I><U> 10.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Aus 2 Strings nach Vokalen und Konsonanten sortiert zurückliefern </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyText1    - erster String für das sortieren
+  * @param anyText2    - zweiter String für das sortieren
+  * @return String          - nach Vokalen/Konsonanten sortierter String
+  * </pre>
+  *
+  */
+String stringSort(String anyText1, String anyText2){
+  // null abfangen
+  if (anyText1 == null)
+    anyText1 = "";
+  if (anyText2 == null)
+    anyText2 = "";
+    
+  // Groß-/Kleinschreibung egal, also alles nach Kleinbuchstaben wandeln
+  anyText1 = anyText1.toLowerCase();  
+  anyText2 = anyText2.toLowerCase();
+  String vowels = "";
+  String consonants = "";
+ 
+  // Länge des größeren Strings für das Ende der Schleife bestimmen
+  int max = anyText1.length() > anyText2.length() ? anyText1.length() : anyText2.length();
+ 
+  for(int i = 0; i < max; i++){
+    if(i < anyText1.length()){
+      // Wenn das Zeichen ein Vokal ist, den Hilfsstring für Vokale füllen
+      // sonst den für Konsonanten
+      if(isVowel(anyText1.charAt(i)))
+        vowels += anyText1.charAt(i);
+      else
+        consonants += anyText1.charAt(i);
+    }
+    if(i < anyText2.length()){
+      if(isVowel(anyText2.charAt(i)))
+        vowels += anyText2.charAt(i);
+      else
+        consonants += anyText2.charAt(i);
+    }
+  }
+ 
+  return (vowels + consonants);
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>isVowel</B>  --<I><U> 10.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Ist das übergebene Zeichen ein Vokal </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyChar    - Zeichen, das geprüft wird
+  * @return boolean   - True -> Zeichee ist ein Vokal
+  *                                - False -> Zeichen ist kein Vokal
+  * </pre>
+  *
+  */
+boolean isVowel(char anyChar){
+  String vowels = "aeiou";
+ 
+  for(int i = 0; i < vowels.length(); i++){
+    if(vowels.charAt(i) == anyChar)
+      return true;
+  }
+  return false;
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>isTautogramm</B>  --<I><U> 10.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Fängt jedes Wort in dem String mit dem gleichen Zeichen an </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyText    - zu prüfender String
+  * @return boolean   - True -> jedes Wort fängt mit dem gleichen Zeichen an
+  *                                - False-> jedes Wort fängt nicht mit dem gleichen Zeichen an
+  * </pre>
+  *
+  */
+boolean isTautogramm(String anyText){
+  // null und Länge 0 abfangen
+  if (anyText == null || anyText.length() == 0)
+    return false;
+    
+  anyText = anyText.toLowerCase();
+  // jedes Wort muss mit diesem Zeichen beginnen
+  char firstChar = anyText.charAt(0);
+ 
+  for(int i = 1; i < anyText.length() - 1; i++){
+    if (anyText.charAt(i) == ' ' && anyText.charAt(i+1) != firstChar)
+      return false;
+  }
+ 
+  return true;
+}
+
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>getISBN</B>  --<I><U> 10.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Prüfziffer eine ISBN 10 berechnen </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyText    - String mit der ISBN-Nummer
+  * @return String        - String mit der ISBN-Nummer und der Prüfziffer
+  * </pre>
+  *
+  */
+String getISBN(String anyText){
+  // null und Länge 0 abfangen
+  if (anyText == null || anyText.length() == 0)
+    return "";
+    
+  String result = anyText;
+  int pruefziffer = 0;
+  int counter = 1;
+ 
+  for(int i = 0; i < anyText.length(); i++){
+    // ist das Zeichen eine Ziffer?
+    if (anyText.charAt(i) >= '0' && anyText.charAt(i) <= '9') {
+      // '0' hat den Asciiwert 48, '1' den Asciiwert 49 usw., zum Rechnen also erst mal 48 abziehen
+      pruefziffer += (int)(anyText.charAt(i)-48) * counter++;
+    }
+  }
+  // nächste Rechenvorschrift für die Prüfziffer
+  pruefziffer = pruefziffer % 11;  
+  if (pruefziffer == 10)
+    result += 'X';
+  else
+    result += pruefziffer;
+    
+  return result;
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>checkIdCard</B>  --<I><U> 10.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Prüfziffer einer IDD-Kennung berechnen </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyText    - Kennung zu der die Prüfziffer berechnet werden soll
+  * @return String        - IDD-Kennung mit der Prüfziffer
+  * </pre>
+  *
+  */
+String checkIdCard(String anyText){
+  // null und Länge 0 abfangen, ID muss die Länge 9 haben
+  if (anyText == null || anyText.length() == 0 || anyText.length() != 9)
+    return "";
+    
+  String result = anyText;
+  int pruefziffer = 0;
+  int factor = 0;
+ 
+  for(int i = 0; i < anyText.length(); i++){
+    // Faktor für die Multiplikation bestimmen, Reihenfolge ist 7, 3, 1, 7, 3, 1, 7, 3, 1
+    if ( i == 0 || i == 3 || i == 6)
+      factor = 7;
+    if ( i == 1 || i == 4 || i == 7)
+      factor = 3;
+    if ( i == 2 || i == 5 || i == 8)
+      factor = 1;
+    // ist das Zeichen eine Ziffer?
+    if(anyText.charAt(i) >= '0' && anyText.charAt(i) <= '9')
+      pruefziffer += (factor * (anyText.charAt(i) - 48));
+    else
+      // Für den Buchstaben A setzt man 10, für B 11 usw.
+      // A hat den Asciiwert 65, um auf 10 zu kommen muss man also 55 abziehen, alle anderen Zeichen entsprechend
+      pruefziffer += (factor * ((int)anyText.charAt(i) - 55));
+  }
+ 
+  // nächste Rechenvorschrift für die Prüfziffer
+  pruefziffer = pruefziffer % 10;
+  return result + pruefziffer;
+}

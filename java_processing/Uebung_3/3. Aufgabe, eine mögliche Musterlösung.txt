@@ -1,0 +1,294 @@
+3. Aufgabe, eine mögliche Musterlösung
+WoBinIch
+void setup() {
+  size(800, 800);
+  rectMode(CENTER);
+  noFill();
+  stroke(255);
+  textSize(30);
+  surface.setTitle("Wo bin ich?");
+}
+
+void draw() {
+  background(0);
+ 
+  // Rechteck mit Koordinatenangaben
+  rect(width/2, height/2, 400, 400);
+  text("200/200", 200, 200);
+  textAlign(LEFT);
+  text("600/600", 600, 600);
+
+  // Ausgabe der aktuellen Mausposition
+  textAlign(CENTER);
+  text(mouseX, mouseX-30, mouseY);
+  text(mouseY, mouseX+30, mouseY);
+ 
+  // Farbwechsel notwendig?
+  if(mouseX >= 200 && mouseX <= 600 && mouseY >= 200 && mouseY <= 600){
+    // innerhalb des Rechtecks
+    strokeWeight(8);
+    stroke(255,0,0);
+  } else {
+    strokeWeight(1);
+    stroke(255);
+  }  
+}
+
+
+
+Farbwechsel
+int hintergrund = 0;
+
+void setup() {
+  size(900, 900);
+  surface.setTitle("Bin ich schon drin...?");
+  textSize(30);
+  textAlign(RIGHT);
+  strokeWeight(3);
+}
+
+void draw() {
+  background(hintergrund);
+  // die verschienfarbigen Rechtecke
+  fill(255, 0, 0);
+  stroke(0, 255, 0);
+  rect(50, 50, 200, 200);
+  fill(0, 255, 0);
+  stroke(255, 0, 0);
+  rect(350, 350, 200, 200);
+  fill(0, 0, 255);
+  stroke(255, 136, 0);
+  rect(650, 650, 200, 200);
+
+  // nacheinender prüfen, ob die Maus in einem der Rechtecke ist, falls ja Hintegrundfarbe wechseln
+  if ((mouseX >= 50 && mouseX <= 250) && (mouseY >= 50 && mouseY <= 250))
+    hintergrund = color(255, 0, 0);
+  else if ((mouseX >= 350 && mouseX <= 550) && (mouseY >= 350 && mouseY <= 550))
+    hintergrund = color(0, 255, 0);
+  else if ((mouseX >= 650 && mouseX <= 850) && (mouseY >= 650 && mouseY <= 850))
+    hintergrund = color(0, 0, 255);
+  else
+    hintergrund = 0;
+}
+
+
+
+TastenAuswerten
+String direction = "keine";
+boolean bStart = false;
+int speed = 1;
+int edgeLength = 100;
+
+void setup() {
+  size(600, 600);
+  textSize(30);
+  rectMode(CENTER);
+}
+
+void draw() {
+  background(0);
+  fill(255);
+  // Ausgabe der aktuellen Daten wie Richtung, Geschwindigkeit, Kantenlänge und Startmodus
+  text(String.format("Richtung: %5s", direction), 20, 30);
+  text(String.format("Objekt %s", (bStart ? "gestartet" : "gestoppt")), 20, 60);
+  text(String.format("Geschwindigkeit: %2d", speed), 20, 90);
+  text(String.format("Kantenlänge %3d", edgeLength),20,120);
+ 
+  // jenach Größe des Rechecks eine andere Füllfarbe setzen
+  if(edgeLength >= 100 && edgeLength <= 166)
+    fill(255);
+  else if(edgeLength > 166 && edgeLength <= 233)
+    fill(255,255,0);
+  else if(edgeLength > 233 && edgeLength <= 300)
+    fill(0,255,255);
+    
+  // Rechteck in der gewünschten Größe zeichnen  
+  rect(width/2,height/2,edgeLength,edgeLength);
+}
+
+void keyPressed() {
+  // Tastencode + Taste ausgeben
+  //println("Taste: " + key + " Tastencode: " + keyCode);
+ 
+  switch(keyCode) {
+  case UP:
+  case 104:
+    direction = "oben";
+    break;
+  case DOWN:
+  case 98:
+    direction = "unten";
+    break;
+  case RIGHT:
+  case 102:
+    direction = "rechts";
+    break;
+  case LEFT:
+  case 100:
+    direction = "links";
+    break;
+  case 10: // Returntaste
+    bStart = !bStart;
+    break;
+  }
+ 
+  // +- Tasten für Geschwindigkeit und
+  // k/K Tasten für die Kantenlänge auswerten
+  switch(key){
+    case '+':
+      // Speed nur erhöhen, wenn es noch im erlaubten Rahmen ist
+      // nicht nach dem Motto, erst gegen die Garagenwand fahren und dann wieder zurückfahren
+      if (speed < 10)
+        speed++;
+      break;
+    case '-':
+      if (speed > 1)
+        speed--;
+      break;
+    case 'k' :
+      if(edgeLength > 100)
+        edgeLength -=10;
+      break;
+    case 'K' :
+      if(edgeLength < 300)
+        edgeLength +=10;
+      break;      
+  }
+}
+
+
+
+Bounce
+int speed = 1;
+int xPos =0;
+int yPos = 0;
+int direct = 1;
+
+byte directionMode = 0;
+String direction = "keine";
+boolean bStart= false;
+boolean bounce = false;
+color circleColor = color(255);
+int durchmesser = 100;
+
+void setup() {
+  size(800, 800);
+  xPos = width/2;
+  yPos = height/2;
+  textSize(30);
+}
+
+void draw() {
+  background(0);
+  // Statianzeige
+  fill(255);
+  text("(k/K) Kreisgröße: " + durchmesser, 20, 30);
+  text((bStart ? "Stopp" : "Start") + " mit Return", 20, 60);
+  text("Richtung Cursortasten: " + direction, 20, 90);
+  text("(+/-) Speed: " + speed, 20, 120);
+  text("(a) Bounce " + (bounce ? "Ja" : "Nein"), 20, 150);
+  text("Kreisfarbe (r/R)  (g/G)  (b/B)",20,180);
+ 
+  fill(circleColor);
+  circle(xPos, yPos, durchmesser);
+ 
+  // Kreis überhaupt gestartet?
+  if (bStart) {
+    // in welche Richtung geht es
+    switch(directionMode) {
+      case 1:
+        yPos = yPos - (speed * direct);
+        break;
+      case 2:
+        yPos = yPos + (speed * direct);
+        break;
+      case 3:
+        xPos = xPos + (speed * direct);
+        break;
+      case 4:
+        xPos = xPos - (speed * direct);
+        break;
+    }
+    // Verhalten bounce oder Verschwinden regeln
+    if (bounce) {
+      if ( (xPos + durchmesser/2) >= width)
+        direct *= -1;
+      if ( (xPos - durchmesser/2) <= 0)
+        direct *= -1;
+      if( (yPos + durchmesser/2) >= height)
+        direct *= -1;
+      if((yPos -durchmesser/2) <= 0)
+        direct *= -1;
+    } else {
+      if ( (xPos + durchmesser/2) < 0)
+        xPos = width + durchmesser/2;
+      if ( (xPos - durchmesser/2) > width)
+        xPos = 0-durchmesser/2;
+      if ( (yPos + durchmesser/2) < 0)
+        yPos = height + durchmesser/2;
+      if ( (yPos - durchmesser/2) > height)
+        yPos = 0-durchmesser/2;
+    }
+  }
+}
+
+void keyPressed() {
+  println(key, keyCode);
+  switch(key) {
+    case 'k':
+      if ( durchmesser > 100)
+        durchmesser -= 10;
+      break;
+    case 'K':
+      if ( durchmesser < 300)
+        durchmesser += 10;
+      break;
+    case '+':
+      if (speed < 10)
+        speed++;
+      break;
+    case '-':
+      if (speed > 1)
+        speed--;
+      break;
+    case 'r':
+    case 'R':
+      circleColor = color(255,0,0);
+      break;
+    case 'g':
+    case 'G':
+      circleColor = color(0,255,0);
+      break;
+    case 'b':
+    case 'B':
+      circleColor = color(0,0,255);
+      break;
+ 
+    case 'a':
+      bounce = !bounce;
+      break;
+  }
+ 
+  // Cursortasten
+  switch(keyCode) {
+    case 10:  //
+      bStart = !bStart;
+      break;
+    case UP:
+      directionMode = 1;
+      direction = "oben";
+      break;
+    case DOWN:
+      directionMode = 2;
+      direction ="unten";
+      break;
+    case RIGHT:
+      directionMode = 3;
+      direction = "rechts";
+      break;
+    case LEFT:
+      directionMode = 4;
+      direction = "links";
+      break;
+  }
+}

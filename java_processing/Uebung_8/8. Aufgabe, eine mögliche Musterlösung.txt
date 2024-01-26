@@ -1,0 +1,477 @@
+8. Aufgabe, eine mögliche Musterlösung
+ /**
+  *
+  * <pre>
+  * Methodenname: <B>isStartOrEndEqual</B>  --<I><U> 11.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Sind bei zwei Araays die ersten oder die letzten Elemente gleich </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param firstArray           - erstes zu prüfendes Feld
+  * @param secondArray     - zweites zu prüfendes Feld
+  * @return boolean        - Ergebnis des Vergleichs
+  *                                        - True -> erstes oder letztes Paar sind gleich
+  *                                        - False -> erstes oder letztes Paar sind nicht gleich
+  * </pre>
+  *
+  */
+boolean isStartOrEndEqual(int[] firstArray, int[] secondArray) {
+  return (firstArray[0] == secondArray[0] || firstArray[firstArray.length - 1] == secondArray[secondArray.length - 1]);
+}
+
+
+ /**
+  *
+  * <pre>
+  * Methodenname: <B>getFirstAndLast</B>  --<I><U> 11.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Neues Feld mit dem ersten und letzten Element des Parameterfeldes bilden </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyArray      - Feld aus dem das erste und letzte Element kopiert werden
+  * @return int[]               - neues Feld mit den kopierten Elementen
+  * </pre>
+  *
+  */
+int[] getFirstAndLast(int anyArray[]){
+  // null und Länge 0 abfangen
+  if( anyArray == null || anyArray.length == 0)
+    return new int[]{};
+  // nur erstes und letztes Element relevant, also keine Schleife notwendig
+  return (new int[] { anyArray[0], anyArray[anyArray.length - 1] });
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>swapFirstLast</B>  --<I><U> 11.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>erstes und letztes Element in einem Feld tauschen </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyArray      - Feld in dem getauscht werden soll
+  * @return short[]           - Feld mit den getauschten Elementen
+  * </pre>
+  *
+  */
+short[] swapFirstLast(short[] anyArray) {
+  // null und Länge 0 abfangen   
+  if( anyArray == null || anyArray.length == 0)
+    return new short[]{};
+    
+  short temp;  
+  // erst ab 2 Elementen kann man tauschen
+  if (anyArray.length > 1){
+    temp = anyArray[0];
+    anyArray[0] = anyArray[anyArray.length-1];
+    anyArray[anyArray.length-1] = temp;
+  }
+  return anyArray;
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>swapArray</B>  --<I><U> 11.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Die Inhalte zweier Felder sollen getauscht werden </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param firstArray           - erstes Feld zum Tauschen
+  * @param secondArray     - zweites Feld zum Tauschen
+  * </pre>
+  *
+  */
+void swapArray(byte firstArray[], byte secondArray[]){
+  // null, Länge 0 und ungleich lang abfangen
+  if (firstArray == null || secondArray == null || firstArray.length == 0 || secondArray.length == 0 || firstArray.length != secondArray.length)
+    return;
+    
+  byte temp = 0;
+  for(int i = 0; i < secondArray.length; i++){
+    temp = secondArray[i];
+    secondArray[i] = firstArray[i];
+    firstArray[i] = temp;
+  }
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>findLong</B>  --<I><U> 11.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Die Anzahl Ziffern der längsten Zahl ermitteln </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyArray    - Feld mit den zu prüfenden Zahlen
+  * @return int               - Anzahl Ziffern der längsten Zahl
+  * </pre>
+  *
+  */
+int findLong(long[] anyArray) {
+  // null und Länge 0 abfangen   
+  if( anyArray == null || anyArray.length == 0)
+    return 0;
+    
+  int nMax = 0;
+ 
+  for (int i = 0; i < anyArray.length; i++) {
+    // Zahl in String wandeln und die Länge mit length() bestimmen
+    String s = "" + anyArray[i];
+    if (s.length() > nMax){
+      nMax = s.length();        
+    }
+  }
+  return nMax;
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>findMax</B>  --<I><U> 11.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>In einem Feld die größte Zahl ermitteln </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyArray     - Feld mit den zu prüfenden Zahlen
+  * @return long             - größte gefundene Zahl
+  * </pre>
+  *
+  */
+long findMax(long[] anyArray) {
+  // null und Länge 0 abfangen
+  if( anyArray == null || anyArray.length == 0)
+    return 0;
+ 
+  // Bei Suche nach Max-Werten immer mit möglichst kleinen Werten initialisieren, Bei Min-Werten umgekehrt
+  // Alternative ist die Zuweisung des ersten Feldelementes: long maxLong = anyArray[0];
+  long maxLong = Long.MIN_VALUE;  
+  for (int i = 0; i < anyArray.length; i++) {    
+    if (anyArray[i] > maxLong){
+      maxLong = anyArray[i];        
+    }
+  }
+  return maxLong;
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>findLongest</B>  --<I><U> 11.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>maximale Länge bei den Subarrays ermitteln</BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyArray      - Feld das untersucht wird
+  * @return int                 - größte gefundene Länge
+  * </pre>
+  *
+  */
+int findLongest(int[][] anyArray) {
+  // null und Länge 0 abfangen
+  if( anyArray == null || anyArray.length == 0)
+    return 0;
+    
+  int nMax = 0;
+ 
+  for (int i = 0; i < anyArray.length; i++) {
+    if (anyArray[i].length > nMax){
+      nMax = anyArray[i].length;        
+    }
+  }
+  return nMax;
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>shiftArray</B>  --<I><U> 11.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Alle Elemente eines Feldes nach links oder rechts schieben </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyArray    - Feld in dem die Elemente verschoben werden
+  * @param bLeft          - steuert, ob nach rechts oder links geschoben wird
+  *                                     - True -> nach links
+  *                                     - False -> nach rechts
+  * @return int[]      - Feld mit verschobenen Elementen
+  * </pre>
+  *
+  */
+int[] shiftArray(int[] anyArray, boolean bLeft) {
+  // Länge 0 abfangen
+  if (anyArray.length == 0)
+    return anyArray;    
+    
+  // je nach Richtung erstes oder letztes Element merken  
+  int temp = (bLeft ? anyArray[0] : anyArray[anyArray.length - 1]);
+ 
+  // nach links shiften
+  if (bLeft) {
+    for (int i = 0; i < anyArray.length - 1; i++){
+      anyArray[i] = anyArray[i + 1];
+    }
+  }
+  else {
+    // nach rechts shiften
+    for(int i = anyArray.length - 1 ; i > 0; i--) {
+      anyArray[i] = anyArray[i - 1];
+    }
+  }
+  // je nach Richtung erstes oder letztes Element setzen
+  anyArray[(bLeft ? anyArray.length - 1 : 0)]  = temp;
+ 
+  return anyArray;
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>countOddOrEven</B>  --<I><U> 11.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Anzahl der geraden oder ungeraden Zahlen wird ermittelt </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyArray         - Feld deren Elemente gezählt werden
+  * @param oddOrEven     - steuert ob gerade oder ungerade Zahlen gezählt werden
+  *                                          - True -> ungerade Zahlen werden gezählt
+  *                                          - False -> gerade Zahlen werden gezählt  
+  * @return byte         - Anzahl der un-/geraden Zahlen
+  * </pre>
+  *
+  */
+byte countOddOrEven(int[] anyArray, boolean oddOrEven) {
+  // Länge 0 abfangen   
+  if (anyArray.length == 0)
+    return 0;
+    
+  byte count = 0;
+  // gerade oder ungerade Zahlen zählen, bei ungerade ist der Rest 1
+  int rest = (oddOrEven ? 1 : 0);
+ 
+  for(int i = 0; i < anyArray.length; i++){
+    if(anyArray[i] % 2 == rest)
+      count++;
+  }
+  return count;
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>cutBy5</B>  --<I><U> 11.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Alle Elemente, bis zu einer 5, eines Feldes in ein neues kopieren  </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyArray    - Feld, dessen Element kopiert werden
+  * @return short[]    - Feld mit den kopierten Elementen
+  * </pre>
+  *
+  */
+ short[] cutBy5(short[] anyArray) {
+  int arrayLength = 0;
+ 
+  // eine 5 suchen
+  for (int i = 0; i < anyArray.length; i++) {
+    if (anyArray[i] == 5) {
+      arrayLength = i;
+      // es wurde eine 5 gefunden, Schleife abbrechen
+      break;
+    }
+  }
+ 
+  // neues Feld hat die Feldlänge bis zur ersten 5 (ausschließlich)
+  short[] newArray = new short[arrayLength];
+  // Elemente kopieren
+  for (int i = 0; i < newArray.length; i++) {
+    newArray[i] = anyArray[i];
+  }
+  return newArray;
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>getBiggestDiff</B>  --<I><U> 11.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Größte Differenz bei den Elementen ermitteln </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyArray    - Feld, bei dem die größte Differenz ermittelt wird
+  * @return int        - größte Differenz
+  * </pre>
+  *
+  */
+ int getBiggestDiff(int[] anyArray) {
+  int min = anyArray[0];
+  int max = anyArray[0];
+ 
+  // größtes und kleinstes Element ermitteln
+  for(int i = 0; i < anyArray.length; i++){
+    min = (min < anyArray[i] ? min : anyArray[i]);
+    max = (max > anyArray[i] ? max : anyArray[i]);
+  }
+ 
+  // Differenz zurückliefern
+  return (max-min);
+}
+
+
+ /**
+  *
+  * <pre>
+  * Methodenname: <B>setTen</B>  --<I><U> 11.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Ist ein Element durch 10 ohne Rest teilbar, so ersetzt dieses Element, alle Element rechst davon, bis zur nächsten Zahl durch 10 ohne Rest </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyArray    - Feld, das untersucht wird  
+  * @return byte[]     - Feld mit den Ergebnissen
+  * </pre>
+  *
+  */
+byte[] setTen(byte[] anyArray){
+  // Länge 0 abfangen
+  if (anyArray.length == 0)
+    return anyArray;
+    
+  byte ten = 0;  
+  boolean bStart = false;
+ 
+  for (int i = 0; i < anyArray.length; i++) {
+    // Elemente ersetzen ?
+    if (bStart && anyArray[i] % 10 > 0){
+      anyArray[i] = ten;
+    }
+    // Zahl durch 10 ohne Rest teilbar? merken und ab dem nä. Element werden alle Elemente durch dieses Element ersetzt
+    if (anyArray[i] > 0 && anyArray[i] % 10 == 0) {
+      ten = anyArray[i];
+      bStart = true;
+    }
+  }
+  return anyArray;
+}
+
+
+ /**
+  *
+  * <pre>
+  * Methodenname: <B>array2int</B>  --<I><U> 11.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Die Elemente eines Arrays bilden eine int-Zahl </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyArray    - Feld, dessen Element eine neue Zahl bilden
+  * @return int        - neu gebildete Zahl
+  * </pre>
+  *
+  */
+int array2int(int anyArray[]){
+  // null und Länge 0 abfangen
+  if(anyArray == null || anyArray.length == 0)
+    return 0;
+    
+  int ergebnis = 0;
+ 
+  for(int i = 0; i < anyArray.length; i++){
+    int stelle = 0;
+    // nur Ziffern zwischen 1 und 10 betrachten
+    if (anyArray[i] > 0 && anyArray[i] < 10){
+      stelle = 1;
+      for(int n = 1; n <= anyArray.length - i - 1; n++)
+        stelle *= 10;
+      stelle = stelle * anyArray[i];    
+    }
+    ergebnis += stelle;
+  }
+  return ergebnis;
+}
+
+
+/**
+  *
+  * <pre>
+  * Methodenname: <B>getOddOrEven</B>  --<I><U> 11.12.2022 </U></I>--<BR>
+  * Autor: <font color="red" SIZE="+1">Gurn</font>
+  * </pre>
+  *
+  * <B>Beschreibung:</B> <BLOCKQUOTE>Feld aus geraden/ungeraden Zahlen aller Subarrays bilden </BLOCKQUOTE>
+  *
+  * <pre>
+  * @param anyArray    - Zweidimensionales Feld mit geraden/ungeraden Zahlen
+  * @param bEven       - stuert ob gerade oder ungerade Zahlen in das neue Feld wandern
+  *                      - True -> gerade Zahlen
+  *                      - False -> ungerade Zahlen
+  * @return int[]      - Feld mit allen geraden/ungeraden Zahlen
+  * </pre>
+  *
+  */
+int[] getOddOrEven (int[][] anyArray, boolean bEven){
+  // null und Länge 0 abfangen
+  if( anyArray == null || anyArray.length == 0)
+    return new int[]{};
+ 
+  int count = 0;
+  // Welche Zahlen werden gesucht
+  int rest = (bEven ? 0 : 1);
+ 
+  // Anzahl der geraden/ungeraden Zahlen ermitteln
+  for(int i = 0; i < anyArray.length; i++){
+    for(int n = 0; n < anyArray[i].length; n++) {
+      if (anyArray[i][n] % 2 == rest){
+        count++;
+      }
+    }
+  }
+ 
+  // Ergebnisfeld anlegen
+  int result[] = new int[count];
+  count = 0;
+
+  // Zahlen kopieren
+  for(int i = 0; i < anyArray.length; i++){
+    for(int n = 0; n < anyArray[i].length; n++) {
+      if (anyArray[i][n] % 2 == rest){
+        result[count++] = anyArray[i][n];
+      }
+    }
+  }
+
+  return result;
+}
